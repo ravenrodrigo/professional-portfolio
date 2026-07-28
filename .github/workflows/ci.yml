@@ -2,15 +2,24 @@ name: Java Spring Boot CI with Maven
 
 on:
   push:
-    branches: [ "main" ] 
+    branches: [ "main", "feature/*", "develop" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "feature/*", "develop"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    services:
+      postgres_db:
+        image: postgres:18
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: aeAJXsNc8KCojtDFhxJU7YnWJiY2WcQP0nc5aTwMuno7
+          POSTGRES_DB: db_professional_portfolio
+          POSTGRES_HOST: postgres
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 25
@@ -23,3 +32,5 @@ jobs:
       run: mvn clean package
     - name: Test with Maven
       run: mvn test
+
+
