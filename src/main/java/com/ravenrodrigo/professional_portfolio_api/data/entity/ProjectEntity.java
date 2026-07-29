@@ -15,20 +15,27 @@
  */
 package com.ravenrodrigo.professional_portfolio_api.data.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 /**
  * A class that represents a row in tbl_projects.
  *
  * @author Raven Rodrigo
  */
+@Entity
+@Table(name = "tbl_projects")
 public class ProjectEntity {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long projectId;
+
+    public void setProjectId(Long projectId) {
+        this.projectId = projectId;
+    }
+
+    public Long getProjectId() {
+        return projectId;
+    }
 }
