@@ -21,5 +21,35 @@ package com.ravenrodrigo.professional_portfolio_api.web.dto;
  * @author Raven Rodrigo
  */
 public class ProjectCreatePostRequest {
+
+    private String projectName;
+    private String projectDescription;
+    private String projectSourceCode;
+
+    public ProjectCreatePostRequest() {}
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public String getProjectDescription() {
+        return projectDescription;
+    }
+
+    public void setProjectDescription(String projectDescription) {
+        this.projectDescription = projectDescription;
+    }
+
+    public String getProjectSourceCode() {
+        return projectSourceCode;
+    }
+
+    public void setProjectSourceCode(String projectSourceCode) {
+        this.projectSourceCode = projectSourceCode;
+    }
 }
 
