@@ -31,11 +31,44 @@ public class ProjectEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long projectId;
 
+    @Column(name = "project_name")
+    private String projectName;
+
+    @Column(name = "project_description")
+    private String projectDescription;
+
+    @Column(name = "project_source_code")
+    private String projectSourceCode;
+
     public void setProjectId(Long projectId) {
         this.projectId = projectId;
     }
 
     public Long getProjectId() {
         return projectId;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public String getProjectDescription() {
+        return projectDescription;
+    }
+
+    public void setProjectDescription(String projectDescription) {
+        this.projectDescription = projectDescription;
+    }
+
+    public String getProjectSourceCode() {
+        return projectSourceCode;
+    }
+
+    public void setProjectSourceCode(String projectSourceCode) {
+        this.projectSourceCode = projectSourceCode;
     }
 }

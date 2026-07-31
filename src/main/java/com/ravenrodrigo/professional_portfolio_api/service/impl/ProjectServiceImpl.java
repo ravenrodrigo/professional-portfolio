@@ -18,6 +18,7 @@ package com.ravenrodrigo.professional_portfolio_api.service.impl;
 import com.ravenrodrigo.professional_portfolio_api.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio_api.data.repository.ProjectRepository;
 import com.ravenrodrigo.professional_portfolio_api.service.IProjectService;
+import com.ravenrodrigo.professional_portfolio_api.web.dto.ProjectCreatePostRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -40,5 +41,15 @@ public class ProjectServiceImpl implements IProjectService {
     @Override
     public Iterable<ProjectEntity> getAllProjects() {
         return this.projectRepository.findAll();
+    }
+
+    public ProjectEntity translateWebToDb(ProjectCreatePostRequest projectCreatePostRequest) {
+        ProjectEntity projectEntity = new ProjectEntity();
+
+        projectEntity.setProjectName(projectCreatePostRequest.getProjectName());
+        projectEntity.setProjectDescription(projectCreatePostRequest.getProjectDescription());
+        projectEntity.setProjectSourceCode(projectCreatePostRequest.getProjectSourceCode());
+
+        return projectEntity;
     }
 }

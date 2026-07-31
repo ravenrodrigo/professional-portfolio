@@ -18,6 +18,7 @@ package com.ravenrodrigo.professional_portfolio_api.service;
 import com.ravenrodrigo.professional_portfolio_api.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio_api.data.repository.ProjectRepository;
 import com.ravenrodrigo.professional_portfolio_api.service.impl.ProjectServiceImpl;
+import com.ravenrodrigo.professional_portfolio_api.web.dto.ProjectCreatePostRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -31,8 +32,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 /**
@@ -70,5 +70,25 @@ public class ProjectServiceUnitTest {
         // Assert
         assertNotNull(actualProjects);
         assertEquals(2, ((Collection<?>) actualProjects).size());
+    }
+
+    @Test
+    @DisplayName("It should translate the web to db - projects.")
+    void shouldTranslateTheWebToDb() {
+        // Arrange
+        ProjectCreatePostRequest firstProject = new ProjectCreatePostRequest();
+
+        firstProject.setProjectName("First Project");
+        firstProject.setProjectDescription("The first project.");
+        firstProject.setProjectSourceCode("www.github.com/firstproject");
+
+        // Act
+        ProjectEntity projectEntity = projectServiceImpl.translateWebToDb(firstProject);
+
+        // Assert
+        assertNotNull(projectEntity);
+        assertEquals("First Project", projectEntity.getProjectName());
+        assertEquals("The first project.", projectEntity.getProjectDescription());
+        assertEquals("www.github.com/firstproject", projectEntity.getProjectSourceCode());
     }
 }
