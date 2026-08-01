@@ -26,6 +26,8 @@ public class ProjectCreatePostRequest {
     private String projectDescription;
     private String projectSourceCode;
 
+    public ProjectCreatePostRequest() {}
+
     public String getProjectName() {
         return projectName;
     }
