@@ -40,6 +40,8 @@ public class ProjectEntity {
     @Column(name = "project_source_code")
     private String projectSourceCode;
 
+    public ProjectEntity() {}
+
     public void setProjectId(Long projectId) {
         this.projectId = projectId;
     }
