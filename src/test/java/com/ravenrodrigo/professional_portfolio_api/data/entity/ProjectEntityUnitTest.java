@@ -38,4 +38,18 @@ public class ProjectEntityUnitTest {
         // Assert
         assertNotNull(projectEntity);
     }
+
+    @Test
+    @DisplayName("It should create a project entity with 3 arguments.")
+    void shouldCreateAProjectEntityWithAllArguments() {
+        // Arrange
+        ProjectEntity projectEntity = new ProjectEntity(
+                "Project",
+                "The project entity.",
+                "www.github.com/projectsample"
+        );
+
+        // Assert
+        assertNotNull(projectEntity);
+    }
 }
