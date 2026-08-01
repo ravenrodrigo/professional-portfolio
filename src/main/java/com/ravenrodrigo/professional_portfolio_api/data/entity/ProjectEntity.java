@@ -42,6 +42,12 @@ public class ProjectEntity {
 
     public ProjectEntity() {}
 
+    public ProjectEntity(String projectName, String projectDescription, String projectSourceCode) {
+        this.projectName = projectName;
+        this.projectDescription = projectDescription;
+        this.projectSourceCode = projectSourceCode;
+    }
+
     public void setProjectId(Long projectId) {
         this.projectId = projectId;
     }
