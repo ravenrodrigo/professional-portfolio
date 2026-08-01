@@ -28,6 +28,12 @@ public class ProjectCreatePostRequest {
 
     public ProjectCreatePostRequest() {}
 
+    public ProjectCreatePostRequest(String projectName, String projectDescription, String projectSourceCode) {
+        this.projectName = projectName;
+        this.projectDescription = projectDescription;
+        this.projectSourceCode = projectSourceCode;
+    }
+
     public String getProjectName() {
         return projectName;
     }

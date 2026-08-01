@@ -18,6 +18,9 @@ package com.ravenrodrigo.professional_portfolio_api.web.dto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 /**
  * @author Raven Rodrigo
  */
@@ -27,5 +30,22 @@ public class ProjectCreatePostRequestUnitTest {
     @DisplayName("It can create a project with the default constructor.")
     void canCreateAProjectWithDefaultConstructor() {
         ProjectCreatePostRequest firstProject = new ProjectCreatePostRequest();
+    }
+
+    @Test
+    @DisplayName("It should create a project with required parameters.")
+    void shouldCreateAProjectWithRequiredParameters() {
+        // Arrange
+        ProjectCreatePostRequest project = new ProjectCreatePostRequest(
+                "First Project",
+                "The first project.",
+                "www.github.com/firstproject"
+        );
+
+        // Assert
+        assertNotNull(project);
+        assertEquals("First Project", project.getProjectName());
+        assertEquals("The first project.", project.getProjectDescription());
+        assertEquals("www.github.com/firstproject", project.getProjectSourceCode());
     }
 }
