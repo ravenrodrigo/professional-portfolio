@@ -16,6 +16,7 @@
 package com.ravenrodrigo.professional_portfolio_api.service;
 
 import com.ravenrodrigo.professional_portfolio_api.data.entity.ProjectEntity;
+import com.ravenrodrigo.professional_portfolio_api.web.dto.ProjectCreatePostRequest;
 import org.springframework.stereotype.Service;
 
 /**
@@ -26,4 +27,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface IProjectService {
     Iterable<ProjectEntity> getAllProjects();
+    ProjectEntity createProject(ProjectCreatePostRequest projectCreatePostRequest);
 }

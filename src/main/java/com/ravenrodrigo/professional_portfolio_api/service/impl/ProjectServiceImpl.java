@@ -21,9 +21,6 @@ import com.ravenrodrigo.professional_portfolio_api.service.IProjectService;
 import com.ravenrodrigo.professional_portfolio_api.web.dto.ProjectCreatePostRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * A class that implements the Project service interface.
  *
@@ -51,5 +48,15 @@ public class ProjectServiceImpl implements IProjectService {
         projectEntity.setProjectSourceCode(projectCreatePostRequest.getProjectSourceCode());
 
         return projectEntity;
+    }
+
+    /**
+     * A method for project creation.
+     *
+     * @return project entity
+     */
+    @Override
+    public ProjectEntity createProject(ProjectCreatePostRequest projectCreatePostRequest) {
+        return translateWebToDb(projectCreatePostRequest);
     }
 }
