@@ -25,6 +25,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -33,6 +34,8 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 /**
@@ -90,5 +93,27 @@ public class ProjectServiceUnitTest {
         assertEquals("First Project", projectEntity.getProjectName());
         assertEquals("The first project.", projectEntity.getProjectDescription());
         assertEquals("www.github.com/firstproject", projectEntity.getProjectSourceCode());
+    }
+
+    @Test
+    @DisplayName("It should save a created project.")
+    void shouldSaveACreatedProject() {
+        // Arrange
+        ProjectCreatePostRequest firstProject = new ProjectCreatePostRequest(
+                "First Project",
+                "The first project created.",
+                "www.github.com/firstprojectcreated"
+        );
+
+        // Act
+        ProjectEntity createdProject = projectServiceImpl.createProject(firstProject);
+        Mockito.lenient().when(projectRepository.save(createdProject)).thenReturn(createdProject);
+
+        // Assert
+        assertNotNull(createdProject);
+        assertEquals("First Project", createdProject.getProjectName());
+        assertEquals("The first project created.", createdProject.getProjectDescription());
+        assertEquals("www.github.com/firstprojectcreated", createdProject.getProjectSourceCode());
+
     }
 }
