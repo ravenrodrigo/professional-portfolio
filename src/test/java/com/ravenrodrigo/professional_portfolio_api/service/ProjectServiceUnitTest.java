@@ -19,6 +19,7 @@ import com.ravenrodrigo.professional_portfolio_api.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio_api.data.repository.ProjectRepository;
 import com.ravenrodrigo.professional_portfolio_api.service.impl.ProjectServiceImpl;
 import com.ravenrodrigo.professional_portfolio_api.web.dto.ProjectCreatePostRequest;
+import com.ravenrodrigo.professional_portfolio_api.web.dto.ProjectPostResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -115,5 +116,24 @@ public class ProjectServiceUnitTest {
         assertEquals("The first project created.", createdProject.getProjectDescription());
         assertEquals("www.github.com/firstprojectcreated", createdProject.getProjectSourceCode());
 
+    }
+
+    @Test
+    @DisplayName("It should translate the database to web.")
+    void shouldTranslateTheDbToWeb() {
+        // Arrange
+        ProjectEntity projectEntity = new ProjectEntity();
+        projectEntity.setProjectName("First Project");
+        projectEntity.setProjectDescription("The first project.");
+        projectEntity.setProjectSourceCode("www.github.com/firstproject");
+
+        // Act
+        ProjectPostResponse projectPostResponse = projectServiceImpl.translateDbToWeb(projectEntity);
+
+        // Assert
+        assertNotNull(projectPostResponse);
+        assertEquals("First Project", projectPostResponse.getProjectName());
+        assertEquals("The first project.", projectPostResponse.getProjectDescription());
+        assertEquals("www.github.com/firstproject", projectPostResponse.getProjectSourceCode());
     }
 }

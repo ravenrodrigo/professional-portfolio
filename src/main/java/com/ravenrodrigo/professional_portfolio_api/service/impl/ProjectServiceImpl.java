@@ -19,6 +19,7 @@ import com.ravenrodrigo.professional_portfolio_api.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio_api.data.repository.ProjectRepository;
 import com.ravenrodrigo.professional_portfolio_api.service.IProjectService;
 import com.ravenrodrigo.professional_portfolio_api.web.dto.ProjectCreatePostRequest;
+import com.ravenrodrigo.professional_portfolio_api.web.dto.ProjectPostResponse;
 import org.springframework.stereotype.Service;
 
 /**
@@ -48,6 +49,15 @@ public class ProjectServiceImpl implements IProjectService {
         projectEntity.setProjectSourceCode(projectCreatePostRequest.getProjectSourceCode());
 
         return projectEntity;
+    }
+
+    public ProjectPostResponse translateDbToWeb(ProjectEntity projectEntity) {
+        ProjectPostResponse projectPostResponse = new ProjectPostResponse();
+        projectPostResponse.setProjectName(projectEntity.getProjectName());
+        projectPostResponse.setProjectDescription(projectEntity.getProjectDescription());
+        projectPostResponse.setProjectSourceCode(projectEntity.getProjectSourceCode());
+
+        return projectPostResponse;
     }
 
     /**
