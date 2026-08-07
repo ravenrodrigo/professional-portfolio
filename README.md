@@ -14,3 +14,13 @@ When the embedded web server is running, swagger is enabled on the development e
 
 1. Run the 'Professional Portfolio Application'.
 2. Navigate to [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html).
+
+## Services
+
+### Project Management
+
+The following are the services that manages the project/s.
+
+|  Service Name   |  HTTP Method  |         URL         |        Parameter         |    Summary    |
+|:---------------:|:-------------:|:-------------------:|:------------------------:|:-------------:|
+| Create Project  |     POST      | `/api/v1/projects`  | ProjectCreatePostRequest | Add a project |
