@@ -52,4 +52,22 @@ public class ProjectEntityUnitTest {
         // Assert
         assertNotNull(projectEntity);
     }
+
+    @Test
+    @DisplayName("It should create a project entity using constructor with the id parameter.")
+    void shouldCreateAProjectEntityUsingConstructorWithIdParameter() {
+        // Arrange
+        ProjectEntity projectEntity = new ProjectEntity(
+                1L,
+                "Project with Id",
+                "The project with id.",
+                "www.github.com/projectwithid"
+        );
+
+        Long id = 1L;
+
+        // Assert
+        assertNotNull(projectEntity);
+        assertEquals(id, projectEntity.getProjectId());
+    }
 }
