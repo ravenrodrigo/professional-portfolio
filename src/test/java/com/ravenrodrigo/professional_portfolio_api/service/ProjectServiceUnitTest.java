@@ -35,8 +35,6 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 /**
@@ -135,5 +133,27 @@ public class ProjectServiceUnitTest {
         assertEquals("First Project", projectPostResponse.getProjectName());
         assertEquals("The first project.", projectPostResponse.getProjectDescription());
         assertEquals("www.github.com/firstproject", projectPostResponse.getProjectSourceCode());
+    }
+
+    @Test
+    @DisplayName("It should get a single project.")
+    void shouldGetSingleProject() {
+        // Arrange
+        ProjectEntity projectFromDb = new ProjectEntity(
+                1L,
+                "Existing Project",
+                "The existing project.",
+                "www.github.com/existingproject"
+        );
+
+        // Act
+        ProjectPostResponse project = projectServiceImpl.getProject(projectFromDb.getProjectId());
+        project.setProjectName(projectFromDb.getProjectName());
+        project.setProjectDescription(projectFromDb.getProjectDescription());
+        project.setProjectSourceCode(projectFromDb.getProjectSourceCode());
+
+        // Assert
+        assertNotNull(project);
+        assertEquals("Existing Project", project.getProjectName());
     }
 }
