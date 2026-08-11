@@ -18,6 +18,7 @@ package com.ravenrodrigo.professional_portfolio_api.web.controller;
 import com.ravenrodrigo.professional_portfolio_api.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio_api.service.impl.ProjectServiceImpl;
 import com.ravenrodrigo.professional_portfolio_api.web.dto.ProjectCreatePostRequest;
+import com.ravenrodrigo.professional_portfolio_api.web.dto.ProjectPostResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -64,5 +66,24 @@ public class ProjectControllerUnitTest {
                 .content("{ \"projectName\": \"Firs Project\", \"projectDescription\": \"The first project.\", \"projectSourceCode\": \"www.github.com/firstproject\" }")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated());
+    }
+
+    @Test
+    @DisplayName("It should return status ok after a project retrieved by id.")
+    void shouldReturnStatusOkWhenProjectGetWithId() throws Exception {
+        // Given
+        ProjectEntity projectEntity = new ProjectEntity();
+        projectEntity.setProjectId(1L);
+
+        ProjectPostResponse projectPostResponse = new ProjectPostResponse();
+        projectPostResponse.setProjectName("First Project.");
+        projectPostResponse.setProjectDescription("This is the first project.");
+        projectPostResponse.setProjectSourceCode("www.github.com/firstproject");
+
+        // When
+        when(projectService.getProject(projectEntity.getProjectId())).thenReturn(projectPostResponse);
+        mockMvc.perform(get("/api/v1/1"))
+                .andExpect(status().isOk());
+
     }
 }
