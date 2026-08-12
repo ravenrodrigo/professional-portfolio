@@ -21,6 +21,7 @@ When the embedded web server is running, swagger is enabled on the development e
 
 The following are the services that manages the project/s.
 
-|  Service Name   |  HTTP Method  |         URL         |        Parameter         |    Summary    |
-|:---------------:|:-------------:|:-------------------:|:------------------------:|:-------------:|
-| Create Project  |     POST      | `/api/v1/projects`  | ProjectCreatePostRequest | Add a project |
+|    Service Name    | HTTP Method |           URL           |        Parameter         |     Summary     |
+|:------------------:|:-----------:|:-----------------------:|:------------------------:|:---------------:|
+|   Create Project   |    POST     |   `/api/v1/projects`    | ProjectCreatePostRequest |  Add a project  |
+| Retrieve a Project |     GET     |  `/api/v1/{projectId}`  |       Project ID         |  Get a project  |
