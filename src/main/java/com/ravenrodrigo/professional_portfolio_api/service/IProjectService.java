@@ -30,4 +30,5 @@ public interface IProjectService {
     Iterable<ProjectEntity> getAllProjects();
     ProjectEntity createProject(ProjectCreatePostRequest projectCreatePostRequest);
     ProjectPostResponse getProject(Long id);
+    void updateProject(ProjectEntity currentProject);
 }

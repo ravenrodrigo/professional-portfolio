@@ -20,11 +20,9 @@ import com.ravenrodrigo.professional_portfolio_api.data.repository.ProjectReposi
 import com.ravenrodrigo.professional_portfolio_api.service.IProjectService;
 import com.ravenrodrigo.professional_portfolio_api.web.dto.ProjectCreatePostRequest;
 import com.ravenrodrigo.professional_portfolio_api.web.dto.ProjectPostResponse;
-import jakarta.persistence.EntityNotFoundException;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.Objects;
 
 /**
  * A class that implements the Project service interface.
@@ -86,5 +84,24 @@ public class ProjectServiceImpl implements IProjectService {
         projectEntity.setProjectId(id);
 
         return translateDbToWeb(projectEntity);
+    }
+
+    /**
+     * A method to update a project.
+     *
+     * @return Project
+     */
+    @Override
+    public void updateProject(ProjectEntity currentProject) {
+        // Get the project id
+        projectRepository.findById(currentProject.getProjectId())
+                .ifPresent(currentProjectUpdate -> {
+                    currentProjectUpdate.setProjectName(currentProject.getProjectName());
+                    currentProjectUpdate.setProjectDescription(currentProject.getProjectDescription());
+                    currentProjectUpdate.setProjectSourceCode(currentProject.getProjectSourceCode());
+
+                    projectRepository.save(currentProjectUpdate);
+                });
+
     }
 }
