@@ -32,9 +32,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
@@ -124,6 +124,29 @@ public class ProjectControllerUnitTest {
         assertNotNull(projects);
 
         mockMvc.perform(get("/api/v1/projects/"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("It should return status ok when current project was updated.")
+    void shouldReturnStatusOkWhenProjectWasUpdated() throws Exception {
+        // Given
+        ProjectEntity existingProject = new ProjectEntity(
+                1L,
+                "Existing Project",
+                "The existing project.",
+                "www.github.com/existingproject"
+        );
+
+        existingProject.setProjectName("Updated Project");
+        existingProject.setProjectDescription("The updated project.");
+
+        // When
+        doNothing().when(projectService).updateProject(existingProject);
+
+        mockMvc.perform(put("/api/v1/project/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{ \"projectId\": 1, \"projectName\": \"Updated Project\", \"projectDescription\": \"The updated project.\", \"projectSourceCode\": \"www.github.com/existingproject\" }" ))
                 .andExpect(status().isOk());
     }
 }

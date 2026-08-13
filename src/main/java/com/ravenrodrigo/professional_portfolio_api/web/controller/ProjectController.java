@@ -57,4 +57,10 @@ public class ProjectController {
     public ResponseEntity<Iterable<ProjectEntity>> getAllProjects() {
         return ResponseEntity.ok(projectService.getAllProjects());
     }
+
+    @PutMapping("/project/{projectId}")
+    public ResponseEntity<?> updateProject(@RequestBody ProjectEntity project) {
+        projectService.updateProject(project);
+        return ResponseEntity.ok("Project updated successfully!");
+    }
 }
