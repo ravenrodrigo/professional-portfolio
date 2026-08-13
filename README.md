@@ -25,3 +25,4 @@ The following are the services that manages the project/s.
 |:------------------:|:-----------:|:-----------------------:|:------------------------:|:---------------:|
 |   Create Project   |    POST     |   `/api/v1/projects`    | ProjectCreatePostRequest |  Add a project  |
 | Retrieve a Project |     GET     |  `/api/v1/{projectId}`  |       Project ID         |  Get a project  |
+| Retrieve all Projects | GET | `/api/v1/projects/` | None | Get all projects
