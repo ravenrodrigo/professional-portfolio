@@ -28,6 +28,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -85,5 +88,42 @@ public class ProjectControllerUnitTest {
         mockMvc.perform(get("/api/v1/1"))
                 .andExpect(status().isOk());
 
+    }
+
+    @Test
+    @DisplayName("It should return status ok after all projects retrieved.")
+    void shouldReturnStatusOkWhenProjectGetAll() throws Exception {
+        // Given
+        ProjectEntity firstProject = new ProjectEntity(
+                1L,
+                "First Project",
+                "The first project.",
+                "www.github.com/firstproject"
+        );
+
+        ProjectEntity secondProject = new ProjectEntity(
+                2L,
+                "Second Project",
+                "The second project.",
+                "www.github.com/secondproject"
+        );
+
+        ProjectEntity thirdProject = new ProjectEntity(
+                3L,
+                "Third Project",
+                "The third project.",
+                "www.github.com/thirdproject"
+        );
+
+        List<ProjectEntity> projects = List.of(firstProject, secondProject, thirdProject);
+
+        // When
+        when(projectService.getAllProjects()).thenReturn(projects);
+
+        // Assert
+        assertNotNull(projects);
+
+        mockMvc.perform(get("/api/v1/projects/"))
+                .andExpect(status().isOk());
     }
 }

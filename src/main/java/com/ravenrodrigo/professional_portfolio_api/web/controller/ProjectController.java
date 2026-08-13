@@ -24,6 +24,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * A controller class for project.
  *
@@ -49,5 +51,10 @@ public class ProjectController {
     @GetMapping("/{projectId}")
     public ResponseEntity<ProjectPostResponse> getProjectById(@PathVariable("projectId") Long projectId) {
         return ResponseEntity.ok(projectService.getProject(projectId));
+    }
+
+    @GetMapping("/projects/")
+    public ResponseEntity<Iterable<ProjectEntity>> getAllProjects() {
+        return ResponseEntity.ok(projectService.getAllProjects());
     }
 }
