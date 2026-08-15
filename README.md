@@ -27,3 +27,7 @@ The following are the services that manages the project/s.
 | Retrieve a Project |     GET     |  `/api/v1/{projectId}`  |        Project ID        |   Get a project    |
 | Retrieve all Projects | GET | `/api/v1/projects/` |           None           |  Get all projects  |  
 | Update a Project | PUT | `/api/v1/project/{projectId}` |      Project Entity      | Modify the project |
+
+## License
+
+The license for this source code is _Apache 2.0_ License.
