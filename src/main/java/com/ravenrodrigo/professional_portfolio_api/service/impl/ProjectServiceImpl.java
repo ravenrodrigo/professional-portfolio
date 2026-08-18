@@ -20,9 +20,12 @@ import com.ravenrodrigo.professional_portfolio_api.data.repository.ProjectReposi
 import com.ravenrodrigo.professional_portfolio_api.service.IProjectService;
 import com.ravenrodrigo.professional_portfolio_api.web.dto.ProjectCreatePostRequest;
 import com.ravenrodrigo.professional_portfolio_api.web.dto.ProjectPostResponse;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalLong;
 
 /**
  * A class that implements the Project service interface.
@@ -103,5 +106,16 @@ public class ProjectServiceImpl implements IProjectService {
                     projectRepository.save(currentProjectUpdate);
                 });
 
+    }
+
+
+    /**
+     * A method to delete a project.
+     *
+     * @param project
+     */
+    @Override
+    public void deleteProject(ProjectEntity project) {
+        projectRepository.delete(project);
     }
 }

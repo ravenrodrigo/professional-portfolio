@@ -33,6 +33,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -174,5 +175,23 @@ public class ProjectServiceUnitTest {
 
         // Assert
         assertEquals("Updated existing project.", existingProject.getProjectDescription());
+    }
+
+    @Test
+    @DisplayName("It should delete a project.")
+    void shouldDeleteAProject() {
+        // Arrange
+        ProjectEntity project = new ProjectEntity(
+                1L,
+                "Project One",
+                "The project one.",
+                "www.github.com/projectone"
+        );
+
+        // Act
+        projectServiceImpl.deleteProject(project);
+
+        // Assert
+        assertNotNull(project);
     }
 }

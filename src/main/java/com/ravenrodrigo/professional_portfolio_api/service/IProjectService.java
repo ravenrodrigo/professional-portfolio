@@ -31,4 +31,5 @@ public interface IProjectService {
     ProjectEntity createProject(ProjectCreatePostRequest projectCreatePostRequest);
     ProjectPostResponse getProject(Long id);
     void updateProject(ProjectEntity currentProject);
+    void deleteProject(ProjectEntity project);
 }
