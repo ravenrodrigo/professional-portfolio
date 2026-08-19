@@ -149,4 +149,25 @@ public class ProjectControllerUnitTest {
                 .content("{ \"projectId\": 1, \"projectName\": \"Updated Project\", \"projectDescription\": \"The updated project.\", \"projectSourceCode\": \"www.github.com/existingproject\" }" ))
                 .andExpect(status().isOk());
     }
+
+    @Test
+    @DisplayName("It should return status ok when the project is deleted.")
+    void shouldReturnStatusOkWhenProjectWasDeleted() throws Exception {
+        // Given
+        ProjectEntity project = new ProjectEntity(
+                2L,
+                "Project 2",
+                "Second project.",
+                "www.github.com/secondproject"
+        );
+
+        // When
+        doNothing().when(projectService).deleteProject(project);
+
+        mockMvc.perform(delete("/api/v1/project/2")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{ \"projectId\": 2, \"projectName\": \"Project 2\", \"projectDescription\": \"Second project.\", \"projectSourceCode\": \"www.github.com/secondproject\" }" ))
+                .andExpect(status().isOk());
+
+    }
 }

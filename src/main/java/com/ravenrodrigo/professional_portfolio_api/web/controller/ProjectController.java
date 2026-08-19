@@ -63,4 +63,9 @@ public class ProjectController {
         projectService.updateProject(project);
         return ResponseEntity.ok("Project updated successfully!");
     }
+
+    @DeleteMapping("/project/{projectId}")
+    public void deleteProject(@RequestBody ProjectEntity project) {
+        projectService.deleteProject(project);
+    }
 }
