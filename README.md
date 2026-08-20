@@ -6,6 +6,18 @@
 
 A compilation of projects made by a professional.
 
+## Start Server
+
+### Web Server 
+
+1. Launch the `professional-portfolio` application from the command line.
+
+    ```sh 
+    $ mvn spring-boot:run
+    ```
+   
+2. Navigate to [http://localhost:8080/api/v1/](http://localhost:8080/api/v1/) in a browser.
+
 ## API
 
 When the embedded web server is running, swagger is enabled on the development environment.
