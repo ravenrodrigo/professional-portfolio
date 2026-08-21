@@ -57,12 +57,11 @@ public class ProjectServiceImpl implements IProjectService {
     }
 
     public ProjectPostResponse translateDbToWeb(ProjectEntity projectEntity) {
-        ProjectPostResponse projectPostResponse = new ProjectPostResponse();
-        projectPostResponse.setProjectName(projectEntity.getProjectName());
-        projectPostResponse.setProjectDescription(projectEntity.getProjectDescription());
-        projectPostResponse.setProjectSourceCode(projectEntity.getProjectSourceCode());
-
-        return projectPostResponse;
+        return new ProjectPostResponse(
+                projectEntity.getProjectName(),
+                projectEntity.getProjectDescription(),
+                projectEntity.getProjectSourceCode()
+        );
     }
 
     /**

@@ -131,9 +131,9 @@ public class ProjectServiceUnitTest {
 
         // Assert
         assertNotNull(projectPostResponse);
-        assertEquals("First Project", projectPostResponse.getProjectName());
-        assertEquals("The first project.", projectPostResponse.getProjectDescription());
-        assertEquals("www.github.com/firstproject", projectPostResponse.getProjectSourceCode());
+        assertEquals("First Project", projectEntity.getProjectName());
+        assertEquals("The first project.", projectEntity.getProjectDescription());
+        assertEquals("www.github.com/firstproject", projectEntity.getProjectSourceCode());
     }
 
     @Test
@@ -148,14 +148,11 @@ public class ProjectServiceUnitTest {
         );
 
         // Act
-        ProjectPostResponse project = projectServiceImpl.getProject(projectFromDb.getProjectId());
-        project.setProjectName(projectFromDb.getProjectName());
-        project.setProjectDescription(projectFromDb.getProjectDescription());
-        project.setProjectSourceCode(projectFromDb.getProjectSourceCode());
+        ProjectPostResponse project = projectServiceImpl.translateDbToWeb(projectFromDb);
 
         // Assert
         assertNotNull(project);
-        assertEquals("Existing Project", project.getProjectName());
+        assertEquals("Existing Project", project.projectName());
     }
 
     @Test

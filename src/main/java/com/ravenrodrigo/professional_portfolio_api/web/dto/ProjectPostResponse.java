@@ -16,39 +16,12 @@
 package com.ravenrodrigo.professional_portfolio_api.web.dto;
 
 /**
- * A DTO class for project post response.
+ * A record for project post response.
  *
  * @author Raven Rodrigo
  */
-public class ProjectPostResponse {
-
-    private String projectName;
-    private String projectDescription;
-    private String projectSourceCode;
-
-    public ProjectPostResponse() {}
-
-    public String getProjectName() {
-        return projectName;
-    }
-
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
-    }
-
-    public String getProjectDescription() {
-        return projectDescription;
-    }
-
-    public void setProjectDescription(String projectDescription) {
-        this.projectDescription = projectDescription;
-    }
-
-    public String getProjectSourceCode() {
-        return projectSourceCode;
-    }
-
-    public void setProjectSourceCode(String projectSourceCode) {
-        this.projectSourceCode = projectSourceCode;
+public record ProjectPostResponse(String projectName, String projectDescription, String projectSourceCode)  {
+    ProjectPostResponse() {
+        this(null, null, null);
     }
 }

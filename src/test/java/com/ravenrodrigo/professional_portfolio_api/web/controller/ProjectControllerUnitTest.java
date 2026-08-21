@@ -78,10 +78,11 @@ public class ProjectControllerUnitTest {
         ProjectEntity projectEntity = new ProjectEntity();
         projectEntity.setProjectId(1L);
 
-        ProjectPostResponse projectPostResponse = new ProjectPostResponse();
-        projectPostResponse.setProjectName("First Project.");
-        projectPostResponse.setProjectDescription("This is the first project.");
-        projectPostResponse.setProjectSourceCode("www.github.com/firstproject");
+        ProjectPostResponse projectPostResponse = new ProjectPostResponse(
+                "First Project.",
+                "This is the first project.",
+                "www.github.com/firstproject"
+        );
 
         // When
         when(projectService.getProject(projectEntity.getProjectId())).thenReturn(projectPostResponse);
