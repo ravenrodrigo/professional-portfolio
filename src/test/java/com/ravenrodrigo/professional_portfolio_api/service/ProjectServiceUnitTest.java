@@ -79,11 +79,11 @@ public class ProjectServiceUnitTest {
     @DisplayName("It should translate the web to db - projects.")
     void shouldTranslateTheWebToDb() {
         // Arrange
-        ProjectCreatePostRequest firstProject = new ProjectCreatePostRequest();
-
-        firstProject.setProjectName("First Project");
-        firstProject.setProjectDescription("The first project.");
-        firstProject.setProjectSourceCode("www.github.com/firstproject");
+        ProjectCreatePostRequest firstProject = new ProjectCreatePostRequest(
+                "First Project",
+                "The first project.",
+                "www.github.com/firstproject"
+        );
 
         // Act
         ProjectEntity projectEntity = projectServiceImpl.translateWebToDb(firstProject);

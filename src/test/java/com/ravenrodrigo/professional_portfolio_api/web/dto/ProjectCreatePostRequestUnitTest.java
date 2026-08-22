@@ -44,8 +44,8 @@ public class ProjectCreatePostRequestUnitTest {
 
         // Assert
         assertNotNull(project);
-        assertEquals("First Project", project.getProjectName());
-        assertEquals("The first project.", project.getProjectDescription());
-        assertEquals("www.github.com/firstproject", project.getProjectSourceCode());
+        assertEquals("First Project", project.projectName());
+        assertEquals("The first project.", project.projectDescription());
+        assertEquals("www.github.com/firstproject", project.projectSourceCode());
     }
 }
