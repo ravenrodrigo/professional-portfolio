@@ -28,6 +28,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface IProjectService {
     Iterable<ProjectEntity> getAllProjects();
+    ProjectEntity translateWebToDb(ProjectCreatePostRequest projectCreatePostRequest);
     ProjectEntity createProject(ProjectCreatePostRequest projectCreatePostRequest);
     ProjectPostResponse getProject(Long id);
     void updateProject(ProjectEntity currentProject);

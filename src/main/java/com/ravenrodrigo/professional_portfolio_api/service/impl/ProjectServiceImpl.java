@@ -46,6 +46,13 @@ public class ProjectServiceImpl implements IProjectService {
         return this.projectRepository.findAll();
     }
 
+    /**
+     * A method that translate the web data to database.
+     *
+     * @param projectCreatePostRequest
+     * @return
+     */
+    @Override
     public ProjectEntity translateWebToDb(ProjectCreatePostRequest projectCreatePostRequest) {
         ProjectEntity projectEntity = new ProjectEntity();
 
