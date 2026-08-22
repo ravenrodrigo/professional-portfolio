@@ -63,6 +63,13 @@ public class ProjectServiceImpl implements IProjectService {
         return projectEntity;
     }
 
+    /**
+     * A method that translate the database to web.
+     *
+     * @param projectEntity
+     * @return
+     */
+    @Override
     public ProjectPostResponse translateDbToWeb(ProjectEntity projectEntity) {
         return new ProjectPostResponse(
                 projectEntity.getProjectName(),
