@@ -38,4 +38,34 @@ public class OwnerInfoEntity {
     private String phoneNumber;
 
     public OwnerInfoEntity() {}
+
+    public OwnerInfoEntity(Long infoId, String email, String phoneNumber) {
+        this.infoId = infoId;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Long getInfoId() {
+        return infoId;
+    }
+
+    public void setInfoId(Long infoId) {
+        this.infoId = infoId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }
