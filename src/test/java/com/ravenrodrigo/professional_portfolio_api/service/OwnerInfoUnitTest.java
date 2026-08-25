@@ -15,7 +15,7 @@
  */
 package com.ravenrodrigo.professional_portfolio_api.service;
 
-import com.ravenrodrigo.professional_portfolio_api.data.entity.ContactDetailsEntity;
+import com.ravenrodrigo.professional_portfolio_api.data.entity.OwnerInfoEntity;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,19 +25,19 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * A unit test class for Contact service.
+ * A unit test class for Owner Information service.
  *
  * @author Raven Rodrigo
  */
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest
-public class ContactServiceUnitTest {
+public class OwnerInfoUnitTest {
 
     @Test
-    @DisplayName("It should create contact details entity with no arguments.")
-    void shouldCreateContactDetailsEntityWithNoArguments() {
+    @DisplayName("It should create owner info entity with no arguments.")
+    void shouldCreateOwnerInfoEntityWithNoArguments() {
         // Arrange
-        ContactDetailsEntity contactDetails = new ContactDetailsEntity();
+        OwnerInfoEntity contactDetails = new OwnerInfoEntity();
 
         // Act
         assertNotNull(contactDetails);

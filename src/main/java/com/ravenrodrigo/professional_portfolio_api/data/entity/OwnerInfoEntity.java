@@ -23,13 +23,13 @@ import jakarta.persistence.*;
  * @author Raven Rodrigo
  */
 @Entity
-@Table(name = "tbl_contact_details")
-public class ContactDetailsEntity {
+@Table(name = "tbl_owner_info")
+public class OwnerInfoEntity {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long contactId;
+    private Long infoId;
 
     @Column(name = "email")
     private String email;
@@ -37,5 +37,5 @@ public class ContactDetailsEntity {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    public ContactDetailsEntity() {}
+    public OwnerInfoEntity() {}
 }
