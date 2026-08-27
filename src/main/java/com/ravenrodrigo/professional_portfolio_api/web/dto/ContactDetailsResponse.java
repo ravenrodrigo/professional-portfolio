@@ -13,19 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.ravenrodrigo.professional_portfolio_api.service;
-
-import com.ravenrodrigo.professional_portfolio_api.data.entity.OwnerInfoEntity;
-import com.ravenrodrigo.professional_portfolio_api.web.dto.ContactDetailsResponse;
-import org.springframework.stereotype.Service;
+package com.ravenrodrigo.professional_portfolio_api.web.dto;
 
 /**
- * An interface for the owner's information.
+ * A DTO that holds the contact details.
  *
  * @author Raven Rodrigo
  */
-@Service
-public interface IContactService {
-    ContactDetailsResponse translateOwnerInfoEntityToContactDetails(OwnerInfoEntity ownerInfoEntity);
-    ContactDetailsResponse displayContactDetails();
+public record ContactDetailsResponse(String email, String phoneNumber) {
 }

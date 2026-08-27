@@ -19,7 +19,10 @@ import com.ravenrodrigo.professional_portfolio_api.data.entity.OwnerInfoEntity;
 import com.ravenrodrigo.professional_portfolio_api.data.repository.ContactInformationRepository;
 import com.ravenrodrigo.professional_portfolio_api.service.IContactService;
 import com.ravenrodrigo.professional_portfolio_api.web.dto.ContactDetailsResponse;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 /**
  * @author Raven Rodrigo
@@ -44,6 +47,25 @@ public class ContactServiceImpl implements IContactService {
         return new ContactDetailsResponse(
                 ownerInfoEntity.getEmail(),
                 ownerInfoEntity.getPhoneNumber()
+        );
+    }
+
+    /**
+     * A method that return the contact details of the owner.
+     *
+     * @return contact details
+     */
+    @Override
+    public ContactDetailsResponse displayContactDetails() {
+        OwnerInfoEntity contactDetails = new OwnerInfoEntity(
+                1L,
+                "sample@email.com",
+                "+123456789"
+        );
+
+        return new ContactDetailsResponse(
+                contactDetails.getEmail(),
+                contactDetails.getPhoneNumber()
         );
     }
 }

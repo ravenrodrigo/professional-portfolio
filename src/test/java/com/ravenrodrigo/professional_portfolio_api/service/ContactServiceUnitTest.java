@@ -15,11 +15,11 @@
  */
 package com.ravenrodrigo.professional_portfolio_api.service;
 
+import com.fasterxml.jackson.annotation.OptBoolean;
 import com.ravenrodrigo.professional_portfolio_api.data.entity.OwnerInfoEntity;
 import com.ravenrodrigo.professional_portfolio_api.data.repository.ContactInformationRepository;
 import com.ravenrodrigo.professional_portfolio_api.service.impl.ContactServiceImpl;
 import com.ravenrodrigo.professional_portfolio_api.web.dto.ContactDetailsResponse;
-import com.ravenrodrigo.professional_portfolio_api.web.dto.ContactInfoResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,6 +27,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -66,9 +68,27 @@ public class ContactServiceUnitTest {
         );
 
         // Act
-        ContactDetailsResponse contactDetailsResponse = contactServiceImpl.translateContactEntityToContactDisplay(OwnerInfoEntity ownerInfoEntity);
+        ContactDetailsResponse contactDetailsResponse = contactServiceImpl.translateOwnerInfoEntityToContactDetails(ownerInfoEntity);
 
         // Assert
         assertEquals(ownerInfoEntity.getEmail(), contactDetailsResponse.email());
+    }
+
+    @Test
+    @DisplayName("It should display the contact details of the owner.")
+    void shouldDisplayContactDetailsOfTheOwner() {
+        // Arrange
+        OwnerInfoEntity contactDetails = new OwnerInfoEntity(
+                1L,
+                "sample@email.com",
+                "+123456789"
+        );
+
+
+        // Act
+        ContactDetailsResponse contactDetailsResponse = contactServiceImpl.displayContactDetails();
+
+        // Assert
+        assertEquals(contactDetails.getPhoneNumber(), contactDetailsResponse.phoneNumber());
     }
 }
