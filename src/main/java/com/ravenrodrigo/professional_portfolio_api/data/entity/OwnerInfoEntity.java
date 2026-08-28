@@ -45,6 +45,11 @@ public class OwnerInfoEntity {
         this.phoneNumber = phoneNumber;
     }
 
+    public OwnerInfoEntity(String email, String phoneNumber) {
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
     public Long getInfoId() {
         return infoId;
     }

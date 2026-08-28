@@ -42,4 +42,19 @@ public class OwnerInfoEntityUnitTest {
         assertNotNull(ownerInfoEntity);
         assertEquals(1L, ownerInfoEntity.getInfoId());
     }
+
+    @Test
+    @DisplayName("It can create owner info entity without the id parameter.")
+    void canCreateOwnerInfoEntityWithoutTheId() {
+        // Arrange
+        OwnerInfoEntity ownerInfoWithOutId = new OwnerInfoEntity(
+                "sample@email.com",
+                "+123456789"
+        );
+
+        // Assert
+        assertNotNull(ownerInfoWithOutId);
+        assertEquals("sample@email.com", ownerInfoWithOutId.getEmail());
+        assertEquals("+123456789", ownerInfoWithOutId.getPhoneNumber());
+    }
 }
