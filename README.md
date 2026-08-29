@@ -41,6 +41,14 @@ The following are the services that manages the project/s.
 | Update a Project | PUT | `/api/v1/project/{projectId}` |      Project Entity      | Modify the project |
 | Delete a Project | DELETE | `/api/v1/project/{projectId}` | Project Entity | Delete a project |
 
+### Contact Details
+
+The following are the services that manages the contact details.
+
+|    Service Name     | HTTP Method |        URL        |            Parameter            |         Summary         |
+|:-------------------:|:-----------:|:-----------------:|:-------------------------------:|:-----------------------:|
+| Add Contact Details |    POST     | `/api/v1/contact` | ContactDetailsCreatePostRequest | Add the contact details |
+
 ## License
 
 The license for this source code is _Apache 2.0_ License.
