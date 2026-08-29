@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.OptBoolean;
 import com.ravenrodrigo.professional_portfolio_api.data.entity.OwnerInfoEntity;
 import com.ravenrodrigo.professional_portfolio_api.data.repository.ContactInformationRepository;
 import com.ravenrodrigo.professional_portfolio_api.service.impl.ContactServiceImpl;
+import com.ravenrodrigo.professional_portfolio_api.web.dto.ContactDetailsCreatePostRequest;
 import com.ravenrodrigo.professional_portfolio_api.web.dto.ContactDetailsResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -90,5 +91,22 @@ public class ContactServiceUnitTest {
 
         // Assert
         assertEquals(contactDetails.getPhoneNumber(), contactDetailsResponse.phoneNumber());
+    }
+
+    @Test
+    @DisplayName("It should create contact details of the owner.")
+    void shouldCreateContactDetailsOfTheOwner() {
+        // Arrange
+        ContactDetailsCreatePostRequest newContactDetails = new ContactDetailsCreatePostRequest(
+                "sample@email.com",
+                "+123456789"
+        );
+
+        // Act
+        contactServiceImpl.addContact(newContactDetails);
+
+        // Assert
+        assertNotNull(newContactDetails);
+        assertEquals("+123456789", newContactDetails.phoneNumber());
     }
 }

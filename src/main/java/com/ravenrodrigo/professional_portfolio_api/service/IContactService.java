@@ -16,6 +16,7 @@
 package com.ravenrodrigo.professional_portfolio_api.service;
 
 import com.ravenrodrigo.professional_portfolio_api.data.entity.OwnerInfoEntity;
+import com.ravenrodrigo.professional_portfolio_api.web.dto.ContactDetailsCreatePostRequest;
 import com.ravenrodrigo.professional_portfolio_api.web.dto.ContactDetailsResponse;
 import org.springframework.stereotype.Service;
 
@@ -28,4 +29,5 @@ import org.springframework.stereotype.Service;
 public interface IContactService {
     ContactDetailsResponse translateOwnerInfoEntityToContactDetails(OwnerInfoEntity ownerInfoEntity);
     ContactDetailsResponse displayContactDetails();
+    OwnerInfoEntity addContact(ContactDetailsCreatePostRequest newContactDetails);
 }

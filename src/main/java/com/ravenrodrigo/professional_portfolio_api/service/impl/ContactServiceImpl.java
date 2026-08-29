@@ -18,6 +18,7 @@ package com.ravenrodrigo.professional_portfolio_api.service.impl;
 import com.ravenrodrigo.professional_portfolio_api.data.entity.OwnerInfoEntity;
 import com.ravenrodrigo.professional_portfolio_api.data.repository.ContactInformationRepository;
 import com.ravenrodrigo.professional_portfolio_api.service.IContactService;
+import com.ravenrodrigo.professional_portfolio_api.web.dto.ContactDetailsCreatePostRequest;
 import com.ravenrodrigo.professional_portfolio_api.web.dto.ContactDetailsResponse;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
@@ -67,5 +68,22 @@ public class ContactServiceImpl implements IContactService {
                 contactDetails.getEmail(),
                 contactDetails.getPhoneNumber()
         );
+    }
+
+    /**
+     * A method that creates new contact details of the owner.
+     *
+     * @param newContactDetails
+     * @return entity of contact details
+     */
+    @Override
+    public OwnerInfoEntity addContact(ContactDetailsCreatePostRequest newContactDetails) {
+        OwnerInfoEntity contactDetails = new OwnerInfoEntity(
+                newContactDetails.email(),
+                newContactDetails.phoneNumber()
+        );
+
+        OwnerInfoEntity saveContactDetails = contactInformationRepository.save(contactDetails);
+        return saveContactDetails;
     }
 }
