@@ -28,6 +28,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface IContactService {
     ContactDetailsResponse translateOwnerInfoEntityToContactDetails(OwnerInfoEntity ownerInfoEntity);
-    ContactDetailsResponse displayContactDetails();
+    ContactDetailsResponse displayContactDetails(Long contactId);
     OwnerInfoEntity addContact(ContactDetailsCreatePostRequest newContactDetails);
 }

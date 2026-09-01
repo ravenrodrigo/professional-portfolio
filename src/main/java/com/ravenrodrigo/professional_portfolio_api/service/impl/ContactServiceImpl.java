@@ -20,7 +20,6 @@ import com.ravenrodrigo.professional_portfolio_api.data.repository.ContactInform
 import com.ravenrodrigo.professional_portfolio_api.service.IContactService;
 import com.ravenrodrigo.professional_portfolio_api.web.dto.ContactDetailsCreatePostRequest;
 import com.ravenrodrigo.professional_portfolio_api.web.dto.ContactDetailsResponse;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -57,17 +56,13 @@ public class ContactServiceImpl implements IContactService {
      * @return contact details
      */
     @Override
-    public ContactDetailsResponse displayContactDetails() {
-        OwnerInfoEntity contactDetails = new OwnerInfoEntity(
-                1L,
-                "sample@email.com",
-                "+123456789"
-        );
+    public ContactDetailsResponse displayContactDetails(Long contactId) {
+        OwnerInfoEntity ownerInfoEntity = new OwnerInfoEntity();
+        ownerInfoEntity.setInfoId(contactId);
+        ownerInfoEntity.setEmail("sample@email.com");
 
-        return new ContactDetailsResponse(
-                contactDetails.getEmail(),
-                contactDetails.getPhoneNumber()
-        );
+
+        return translateOwnerInfoEntityToContactDetails(ownerInfoEntity);
     }
 
     /**

@@ -87,10 +87,11 @@ public class ContactServiceUnitTest {
 
 
         // Act
-        ContactDetailsResponse contactDetailsResponse = contactServiceImpl.displayContactDetails();
+        ContactDetailsResponse contact = contactServiceImpl.displayContactDetails(contactDetails.getInfoId());
 
         // Assert
-        assertEquals(contactDetails.getPhoneNumber(), contactDetailsResponse.phoneNumber());
+        assertNotNull(contact);
+        assertEquals("sample@email.com", contact.email());
     }
 
     @Test
