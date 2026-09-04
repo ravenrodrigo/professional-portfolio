@@ -45,9 +45,10 @@ The following are the services that manages the project/s.
 
 The following are the services that manages the contact details.
 
-|    Service Name     | HTTP Method |        URL        |            Parameter            |         Summary         |
-|:-------------------:|:-----------:|:-----------------:|:-------------------------------:|:-----------------------:|
-| Add Contact Details |    POST     | `/api/v1/contact` | ContactDetailsCreatePostRequest | Add the contact details |
+|       Service Name        | HTTP Method |        URL        |            Parameter            |         Summary      |
+|:-------------------------:|:-----------:|:-----------------:|:-------------------------------:|:--------------------:|
+|    Add Contact Details    |    POST     | `/api/v1/contact` | ContactDetailsCreatePostRequest | Add the contact details |
+ | Retrieve a Contact Detail | GET | `/api/v1/{contactId}` | Contact ID | Get a contact detail |
 
 ## License
 
