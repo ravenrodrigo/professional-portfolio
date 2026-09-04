@@ -18,13 +18,11 @@ package com.ravenrodrigo.professional_portfolio_api.web.controller;
 import com.ravenrodrigo.professional_portfolio_api.data.entity.OwnerInfoEntity;
 import com.ravenrodrigo.professional_portfolio_api.service.IContactService;
 import com.ravenrodrigo.professional_portfolio_api.web.dto.ContactDetailsCreatePostRequest;
+import com.ravenrodrigo.professional_portfolio_api.web.dto.ContactDetailsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * A controller class for contact details.
@@ -46,5 +44,10 @@ public class ContactDetailsController {
     public ResponseEntity<OwnerInfoEntity> newContactDetails(@RequestBody ContactDetailsCreatePostRequest contactDetails) {
         OwnerInfoEntity newContactDetails = contactService.addContact(contactDetails);
         return new ResponseEntity<>(newContactDetails, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{contactId}")
+    public ResponseEntity<ContactDetailsResponse> getContactDetails(@PathVariable Long contactId) {
+        return ResponseEntity.ok(contactService.displayContactDetails(contactId));
     }
 }

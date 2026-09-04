@@ -18,6 +18,7 @@ package com.ravenrodrigo.professional_portfolio_api.web.controller;
 import com.ravenrodrigo.professional_portfolio_api.data.entity.OwnerInfoEntity;
 import com.ravenrodrigo.professional_portfolio_api.service.impl.ContactServiceImpl;
 import com.ravenrodrigo.professional_portfolio_api.web.dto.ContactDetailsCreatePostRequest;
+import com.ravenrodrigo.professional_portfolio_api.web.dto.ContactDetailsResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -68,5 +71,23 @@ public class ContactDetailsControllerUnitTest {
                 .content("{ \"email\": \"sample@email.com\", \"phoneNumber\": \"+123456789\" }")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated());
+    }
+
+    @Test
+    @DisplayName("It should return status ok when get contact details.")
+    void shouldReturnStatusOkWhenGetContactDetails() throws  Exception {
+        // Given
+        OwnerInfoEntity ownerInfoEntity = new OwnerInfoEntity();
+        ownerInfoEntity.setInfoId(1L);
+
+        ContactDetailsResponse contactDetailsResponse = new ContactDetailsResponse(
+                "sample@email.com",
+                "+123456789"
+        );
+
+        // When
+        when(contactService.displayContactDetails(ownerInfoEntity.getInfoId())).thenReturn(contactDetailsResponse);
+        mockMvc.perform(get("/api/v1/1"))
+                .andExpect(status().isOk());
     }
 }
