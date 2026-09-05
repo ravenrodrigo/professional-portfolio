@@ -30,4 +30,5 @@ public interface IContactService {
     ContactDetailsResponse translateOwnerInfoEntityToContactDetails(OwnerInfoEntity ownerInfoEntity);
     ContactDetailsResponse displayContactDetails(Long contactId);
     OwnerInfoEntity addContact(ContactDetailsCreatePostRequest newContactDetails);
+    void deleteContact(Long contactId);
 }

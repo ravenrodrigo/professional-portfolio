@@ -32,6 +32,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 /**
  * A unit test class for Owner Information service.
@@ -109,5 +110,22 @@ public class ContactServiceUnitTest {
         // Assert
         assertNotNull(newContactDetails);
         assertEquals("+123456789", newContactDetails.phoneNumber());
+    }
+
+    @Test
+    @DisplayName("It should delete the contact details")
+    void shouldDeleteContactDetails() {
+        // Given
+        OwnerInfoEntity ownerInfoEntity = new OwnerInfoEntity(
+                1L,
+                "sample@email.com",
+                "+12345678"
+        );
+
+        // When
+        contactServiceImpl.deleteContact(ownerInfoEntity.getInfoId());
+
+        // Verify
+        verify(contactInformationRepository).deleteById(ownerInfoEntity.getInfoId());
     }
 }

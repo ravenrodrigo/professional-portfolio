@@ -81,4 +81,16 @@ public class ContactServiceImpl implements IContactService {
         OwnerInfoEntity saveContactDetails = contactInformationRepository.save(contactDetails);
         return saveContactDetails;
     }
+
+    /**
+     * A method that removes the contact details.
+     *
+     * @param contactId
+     */
+    @Override
+    public void deleteContact(Long contactId) {
+        OwnerInfoEntity ownerInfoEntity = new OwnerInfoEntity();
+        ownerInfoEntity.setInfoId(contactId);
+        contactInformationRepository.deleteById(ownerInfoEntity.getInfoId());
+    }
 }
