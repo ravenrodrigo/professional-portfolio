@@ -40,6 +40,14 @@ public class ProjectEntity {
     @Column(name = "project_source_code")
     private String projectSourceCode;
 
+    public ProjectEntity() {}
+
+    public ProjectEntity(String projectName, String projectDescription, String projectSourceCode) {
+        this.projectName = projectName;
+        this.projectDescription = projectDescription;
+        this.projectSourceCode = projectSourceCode;
+    }
+
     public Long getProjectId() {
         return projectId;
     }
