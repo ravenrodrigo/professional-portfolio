@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.ravenrodrigo.professional_portfolio.repository;
+package com.ravenrodrigo.professional_portfolio.data.repository;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import org.springframework.data.repository.CrudRepository;

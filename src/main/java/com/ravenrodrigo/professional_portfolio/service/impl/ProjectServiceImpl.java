@@ -16,7 +16,7 @@
 package com.ravenrodrigo.professional_portfolio.service.impl;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
-import com.ravenrodrigo.professional_portfolio.repository.ProjectRepository;
+import com.ravenrodrigo.professional_portfolio.data.repository.ProjectRepository;
 import com.ravenrodrigo.professional_portfolio.service.IProjectService;
 import org.springframework.stereotype.Service;
 
