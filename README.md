@@ -5,3 +5,13 @@
 ## Introduction
 
 A compilation of projects made by a professional.
+
+## Services
+
+### Project Management
+
+The following are the services that manages the project/s.
+
+|    Service Name    | HTTP Method |      URL       |        Parameter         |      Summary       |
+|:------------------:|:-----------:|:--------------:|:------------------------:|:------------------:|
+| Retrieve all Projects | GET |   `/api/v1/`   |           None           |  Get all projects  |  
