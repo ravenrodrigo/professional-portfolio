@@ -16,6 +16,7 @@
 package com.ravenrodrigo.professional_portfolio.service;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
+import com.ravenrodrigo.professional_portfolio.web.dto.ProjectGetResponse;
 import org.springframework.stereotype.Service;
 
 /**
@@ -31,4 +32,12 @@ public interface IProjectService {
      * @return projects
      */
     Iterable<ProjectEntity> getAllProjects();
+
+    /**
+     * Translate the Project from database to web.
+     *
+     * @param projectEntity
+     * @return projectGetResponse
+     */
+    ProjectGetResponse translateDbToWeb(ProjectEntity projectEntity);
 }

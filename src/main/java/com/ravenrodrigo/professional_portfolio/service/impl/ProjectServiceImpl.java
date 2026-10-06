@@ -18,6 +18,7 @@ package com.ravenrodrigo.professional_portfolio.service.impl;
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.data.repository.ProjectRepository;
 import com.ravenrodrigo.professional_portfolio.service.IProjectService;
+import com.ravenrodrigo.professional_portfolio.web.dto.ProjectGetResponse;
 import org.springframework.stereotype.Service;
 
 /**
@@ -41,4 +42,20 @@ public class ProjectServiceImpl implements IProjectService  {
     public Iterable<ProjectEntity> getAllProjects() {
         return this.projectRepository.findAll();
     }
+
+    /**
+     * A method that translate the project from db to web.
+     *
+     * @param projectEntity
+     * @return projectGetResponse
+     */
+    @Override
+    public ProjectGetResponse translateDbToWeb(ProjectEntity projectEntity) {
+        return new ProjectGetResponse(
+                projectEntity.getProjectName(),
+                projectEntity.getProjectDescription(),
+                projectEntity.getProjectSourceCode()
+        );
+    }
+
 }
