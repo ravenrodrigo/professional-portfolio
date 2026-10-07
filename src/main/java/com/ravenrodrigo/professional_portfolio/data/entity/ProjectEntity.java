@@ -48,6 +48,13 @@ public class ProjectEntity {
         this.projectSourceCode = projectSourceCode;
     }
 
+    public ProjectEntity(Long projectId, String projectName, String projectDescription, String projectSourceCode) {
+        this.projectId = projectId;
+        this.projectName = projectName;
+        this.projectDescription = projectDescription;
+        this.projectSourceCode = projectSourceCode;
+    }
+
     public Long getProjectId() {
         return projectId;
     }

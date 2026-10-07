@@ -16,6 +16,7 @@
 package com.ravenrodrigo.professional_portfolio.service;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
+import com.ravenrodrigo.professional_portfolio.web.dto.ProjectCreatePostRequest;
 import com.ravenrodrigo.professional_portfolio.web.dto.ProjectGetResponse;
 import org.springframework.stereotype.Service;
 
@@ -40,4 +41,12 @@ public interface IProjectService {
      * @return projectGetResponse
      */
     ProjectGetResponse translateDbToWeb(ProjectEntity projectEntity);
+
+    /**
+     * A method that translate the project in web to database.
+     *
+     * @param projectCreatePostRequest - Project Create POST request.
+     * @return projectEntity
+     */
+    ProjectEntity translateWebToDb(ProjectCreatePostRequest projectCreatePostRequest);
 }

@@ -18,6 +18,7 @@ package com.ravenrodrigo.professional_portfolio.service.impl;
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.data.repository.ProjectRepository;
 import com.ravenrodrigo.professional_portfolio.service.IProjectService;
+import com.ravenrodrigo.professional_portfolio.web.dto.ProjectCreatePostRequest;
 import com.ravenrodrigo.professional_portfolio.web.dto.ProjectGetResponse;
 import org.springframework.stereotype.Service;
 
@@ -58,4 +59,20 @@ public class ProjectServiceImpl implements IProjectService  {
         );
     }
 
+    /**
+     * A method that translate the project in web to database.
+     *
+     * @param projectCreatePostRequest - Project Create POST request
+     * @return projectEntity
+     */
+    @Override
+    public ProjectEntity translateWebToDb(ProjectCreatePostRequest projectCreatePostRequest) {
+        ProjectEntity projectEntity = new ProjectEntity();
+
+        projectEntity.setProjectName(projectCreatePostRequest.projectName());
+        projectEntity.setProjectDescription(projectCreatePostRequest.projectDescription());
+        projectEntity.setProjectSourceCode(projectCreatePostRequest.projectSourceCode());
+
+        return projectEntity;
+    }
 }
