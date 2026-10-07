@@ -22,12 +22,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -78,6 +80,25 @@ public class ProjectControllerUnitTest {
         assertNotNull(projects);
 
         mockMvc.perform(get("/api/v1/"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("It should return status ok when the project is deleted.")
+    void shouldReturnStatusOkWhenProjectIsDeleted() throws Exception {
+        // Given
+        ProjectEntity project = new ProjectEntity(
+                2L,
+                "Project 2",
+                "Second project.",
+                "www.github.com/secondproject"
+        );
+
+        // When
+        doNothing().when(projectServiceImpl).deleteProject(project);
+        mockMvc.perform(delete("/api/v1/2")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{ \"projectId\": 2, \"projectName\": \"Project 2\", \"projectDescription\": \"Second project.\", \"projectSourceCode\": \"www.github.com/secondproject\" }" ))
                 .andExpect(status().isOk());
     }
 }
