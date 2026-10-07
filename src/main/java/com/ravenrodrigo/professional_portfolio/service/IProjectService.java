@@ -58,4 +58,11 @@ public interface IProjectService {
      * @param project - Project Entity
      */
     void deleteProject(ProjectEntity project);
+
+    /**
+     * A method that updates a project.
+     *
+     * @param existingProject - Project in database
+     */
+    void updateProject(ProjectEntity existingProject);
 }

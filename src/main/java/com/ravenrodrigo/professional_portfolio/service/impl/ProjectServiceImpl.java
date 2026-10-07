@@ -87,4 +87,22 @@ public class ProjectServiceImpl implements IProjectService  {
     public void deleteProject(ProjectEntity project) {
         projectRepository.delete(project);
     }
+
+    /**
+     * A method that updates a project.
+     *
+     * @param existingProject - Project in database
+     */
+    @Override
+    public void updateProject(ProjectEntity existingProject) {
+        // Get the project id
+        projectRepository.findById(existingProject.getProjectId())
+                .ifPresent(existingProjectUpdate -> {
+                    existingProjectUpdate.setProjectName(existingProject.getProjectName());
+                    existingProjectUpdate.setProjectDescription(existingProject.getProjectDescription());
+                    existingProjectUpdate.setProjectSourceCode(existingProject.getProjectSourceCode());
+
+                    projectRepository.save(existingProjectUpdate);
+                });
+    }
 }

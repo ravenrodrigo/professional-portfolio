@@ -132,4 +132,24 @@ public class ProjectServiceUnitTest {
         // Act
         projectServiceImpl.deleteProject(project);
     }
+
+    @Test
+    @DisplayName("It should update a project.")
+    void shouldUpdateAProject() {
+        // Arrange
+        ProjectEntity existingProject = new ProjectEntity(
+                1L,
+                "Existing Project",
+                "The existing project.",
+                "www.github.com/existingproject"
+        );
+
+        existingProject.setProjectDescription("Updated existing project.");
+
+        // Act
+        projectServiceImpl.updateProject(existingProject);
+
+        // Assert
+        assertEquals("Updated existing project.", existingProject.getProjectDescription());
+    }
 }
