@@ -12,6 +12,7 @@ A compilation of projects made by a professional.
 
 The following are the services that manages the project/s.
 
-|    Service Name    | HTTP Method |      URL       |        Parameter         |      Summary       |
-|:------------------:|:-----------:|:--------------:|:------------------------:|:------------------:|
-| Retrieve all Projects | GET |   `/api/v1/`   |           None           |  Get all projects  |  
+|    Service Name    | HTTP Method |          URL          |        Parameter         |      Summary       |
+|:------------------:|:-----------:|:---------------------:|:------------------------:|:------------------:|
+| Retrieve all Projects | GET |      `/api/v1/`       |           None           |  Get all projects  |  
+| Delete a Project | DELETE | `/api/v1/{projectId}` | Project Entity | Delete a project |
