@@ -101,4 +101,27 @@ public class ProjectControllerUnitTest {
                         .content("{ \"projectId\": 2, \"projectName\": \"Project 2\", \"projectDescription\": \"Second project.\", \"projectSourceCode\": \"www.github.com/secondproject\" }" ))
                 .andExpect(status().isOk());
     }
+
+    @Test
+    @DisplayName("It should return status ok when current project was updated.")
+    void shouldReturnStatusOkWhenProjectWasUpdated() throws Exception {
+        // Given
+        ProjectEntity existingProject = new ProjectEntity(
+                1L,
+                "Existing Project",
+                "The existing project.",
+                "www.github.com/existingproject"
+        );
+
+        existingProject.setProjectName("Updated Project");
+        existingProject.setProjectDescription("The updated project.");
+
+        // When
+        doNothing().when(projectServiceImpl).updateProject(existingProject);
+
+        mockMvc.perform(put("/api/v1/project/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{ \"projectId\": 1, \"projectName\": \"Updated Project\", \"projectDescription\": \"The updated project.\", \"projectSourceCode\": \"www.github.com/existingproject\" }" ))
+                .andExpect(status().isOk());
+    }
 }

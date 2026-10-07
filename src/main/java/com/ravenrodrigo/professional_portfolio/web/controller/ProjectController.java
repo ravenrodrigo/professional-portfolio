@@ -51,4 +51,10 @@ public class ProjectController {
     public void deleteProject(@RequestBody ProjectEntity project) {
         projectService.deleteProject(project);
     }
+
+    @PutMapping("/project/{projectId}")
+    public ResponseEntity<?> updateProject(@RequestBody ProjectEntity project) {
+        projectService.updateProject(project);
+        return ResponseEntity.ok("Project updated successfully!");
+    }
 }
