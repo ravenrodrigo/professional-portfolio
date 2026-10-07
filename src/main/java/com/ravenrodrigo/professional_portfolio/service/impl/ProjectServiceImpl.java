@@ -22,6 +22,8 @@ import com.ravenrodrigo.professional_portfolio.web.dto.ProjectCreatePostRequest;
 import com.ravenrodrigo.professional_portfolio.web.dto.ProjectGetResponse;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * @author Raven Rodrigo
  */
@@ -74,5 +76,15 @@ public class ProjectServiceImpl implements IProjectService  {
         projectEntity.setProjectSourceCode(projectCreatePostRequest.projectSourceCode());
 
         return projectEntity;
+    }
+
+    /**
+     * A method to delete a project.
+     *
+     * @param project - Project Entity
+     */
+    @Override
+    public void deleteProject(ProjectEntity project) {
+        projectRepository.delete(project);
     }
 }

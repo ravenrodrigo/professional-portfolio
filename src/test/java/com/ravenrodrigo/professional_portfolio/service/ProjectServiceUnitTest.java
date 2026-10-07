@@ -32,6 +32,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -115,5 +116,20 @@ public class ProjectServiceUnitTest {
         // Assert
         assertNotNull(actualProject);
         assertEquals(expectedProject.getProjectName(), actualProject.getProjectName());
+    }
+
+    @Test
+    @DisplayName("It should delete a project.")
+    void shouldDeleteAProject() {
+        // Arrange
+        ProjectEntity project = new ProjectEntity(
+                1L,
+                "Project One",
+                "To be deleted.",
+                "www.githuib.com/projectone"
+        );
+
+        // Act
+        projectServiceImpl.deleteProject(project);
     }
 }
