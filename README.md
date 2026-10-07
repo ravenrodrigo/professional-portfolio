@@ -15,4 +15,5 @@ The following are the services that manages the project/s.
 |    Service Name    | HTTP Method |          URL          |        Parameter         |      Summary       |
 |:------------------:|:-----------:|:---------------------:|:------------------------:|:------------------:|
 | Retrieve all Projects | GET |      `/api/v1/`       |           None           |  Get all projects  |  
+| Update a Project | PUT | `/api/v1/project/{projectId}` |      Project Entity      | Modify the project |
 | Delete a Project | DELETE | `/api/v1/{projectId}` | Project Entity | Delete a project |
