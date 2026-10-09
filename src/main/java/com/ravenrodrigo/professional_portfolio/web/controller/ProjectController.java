@@ -17,7 +17,9 @@ package com.ravenrodrigo.professional_portfolio.web.controller;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.service.IProjectService;
+import com.ravenrodrigo.professional_portfolio.web.dto.ProjectCreatePostRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,5 +58,11 @@ public class ProjectController {
     public ResponseEntity<?> updateProject(@RequestBody ProjectEntity project) {
         projectService.updateProject(project);
         return ResponseEntity.ok("Project updated successfully!");
+    }
+
+    @PostMapping("/projects")
+    public ResponseEntity<ProjectEntity> projectCreate(@RequestBody ProjectCreatePostRequest projectCreatePostRequest) {
+        ProjectEntity createdProject = projectService.createProject(projectCreatePostRequest);
+        return new ResponseEntity<>(createdProject, HttpStatus.CREATED);
     }
 }

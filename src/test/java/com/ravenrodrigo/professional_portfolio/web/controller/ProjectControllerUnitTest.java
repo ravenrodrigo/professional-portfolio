@@ -17,6 +17,7 @@ package com.ravenrodrigo.professional_portfolio.web.controller;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.service.impl.ProjectServiceImpl;
+import com.ravenrodrigo.professional_portfolio.web.dto.ProjectCreatePostRequest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -123,5 +125,24 @@ public class ProjectControllerUnitTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{ \"projectId\": 1, \"projectName\": \"Updated Project\", \"projectDescription\": \"The updated project.\", \"projectSourceCode\": \"www.github.com/existingproject\" }" ))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("It should return status created when project is created.")
+    void shouldReturnStatusCreatedWhenProjectIsCreated() throws Exception {
+        // Given
+        ProjectEntity projectEntity = new ProjectEntity(
+                "First Project",
+                "The first project.",
+                "www.github.com/firstproject"
+        );
+
+        // When
+        when(projectServiceImpl.createProject(any(ProjectCreatePostRequest.class))).thenReturn(projectEntity);
+        mockMvc.perform(post("/api/v1/projects")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{ \"projectName\": \"Firs Project\", \"projectDescription\": \"The first project.\", \"projectSourceCode\": \"www.github.com/firstproject\" }")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isCreated());
     }
 }
