@@ -65,4 +65,12 @@ public interface IProjectService {
      * @param existingProject - Project in database
      */
     void updateProject(ProjectEntity existingProject);
+
+    /**
+     * A method for project creation.
+     *
+     * @param projectCreatePostRequest - project from client
+     * @return createdProject
+     */
+    ProjectEntity createProject(ProjectCreatePostRequest projectCreatePostRequest);
 }

@@ -26,6 +26,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -151,5 +152,32 @@ public class ProjectServiceUnitTest {
 
         // Assert
         assertEquals("Updated existing project.", existingProject.getProjectDescription());
+    }
+
+    @Test
+    @DisplayName("It should save the created project.")
+    void shouldSaveTheCreatedProject() {
+        // Arrange
+        ProjectCreatePostRequest firstProject = new ProjectCreatePostRequest(
+                "First Project",
+                "The first project created.",
+                "www.github.com/firstprojectcreated"
+        );
+
+        ProjectEntity expectedFirstProject = new ProjectEntity(
+                "First Project",
+                "The first project created.",
+                "www.github.com/firstprojectcreated"
+        );
+
+        // Act
+        ProjectEntity createdProject = projectServiceImpl.createProject(firstProject);
+        Mockito.lenient().when(projectRepository.save(createdProject)).thenReturn(createdProject);
+
+        // Assert
+        assertNotNull(createdProject);
+        assertEquals(expectedFirstProject.getProjectName(), createdProject.getProjectName());
+        assertEquals(expectedFirstProject.getProjectDescription(), createdProject.getProjectDescription());
+        assertEquals(expectedFirstProject.getProjectSourceCode(), createdProject.getProjectSourceCode());
     }
 }

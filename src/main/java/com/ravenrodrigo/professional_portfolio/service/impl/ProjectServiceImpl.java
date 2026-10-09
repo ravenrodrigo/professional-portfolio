@@ -105,4 +105,16 @@ public class ProjectServiceImpl implements IProjectService  {
                     projectRepository.save(existingProjectUpdate);
                 });
     }
+
+    /**
+     * A method for project creation.
+     *
+     * @param projectCreatePostRequest - project from client
+     * @return createdProject
+     */
+    @Override
+    public ProjectEntity createProject(ProjectCreatePostRequest projectCreatePostRequest) {
+        ProjectEntity createdProject = translateWebToDb(projectCreatePostRequest);
+        return createdProject;
+    }
 }
