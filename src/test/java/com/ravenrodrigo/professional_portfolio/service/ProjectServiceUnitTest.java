@@ -180,4 +180,23 @@ public class ProjectServiceUnitTest {
         assertEquals(expectedFirstProject.getProjectDescription(), createdProject.getProjectDescription());
         assertEquals(expectedFirstProject.getProjectSourceCode(), createdProject.getProjectSourceCode());
     }
+
+    @Test
+    @DisplayName("It should get a single project.")
+    void shouldGetSingleProject() {
+        // Arrange
+        ProjectEntity projectFromDb = new ProjectEntity(
+                1L,
+                "Existing Project",
+                "The existing project.",
+                "www.github.com/existingproject"
+        );
+
+        // Act
+        ProjectGetResponse project = projectServiceImpl.translateDbToWeb(projectFromDb);
+
+        // Assert
+        assertNotNull(project);
+        assertEquals("Existing Project", project.projectName());
+    }
 }

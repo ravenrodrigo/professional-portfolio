@@ -117,4 +117,18 @@ public class ProjectServiceImpl implements IProjectService  {
         ProjectEntity createdProject = translateWebToDb(projectCreatePostRequest);
         return createdProject;
     }
+
+    /**
+     * A method that retrieve a project by id.
+     *
+     * @param id - project id
+     * @return project dto
+     */
+    @Override
+    public ProjectGetResponse getProjectById(Long id) {
+        ProjectEntity projectEntity = new ProjectEntity();
+        projectEntity.setProjectId(id);
+
+        return translateDbToWeb(projectEntity);
+    }
 }

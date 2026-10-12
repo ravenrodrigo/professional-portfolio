@@ -73,4 +73,12 @@ public interface IProjectService {
      * @return createdProject
      */
     ProjectEntity createProject(ProjectCreatePostRequest projectCreatePostRequest);
+
+    /**
+     * A method that retrieve a project by id.
+     *
+     * @param id - project id
+     * @return project dto
+     */
+    ProjectGetResponse getProjectById(Long id);
 }
