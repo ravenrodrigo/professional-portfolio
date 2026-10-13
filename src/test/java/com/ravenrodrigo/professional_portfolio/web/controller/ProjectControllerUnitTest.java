@@ -18,6 +18,7 @@ package com.ravenrodrigo.professional_portfolio.web.controller;
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.service.impl.ProjectServiceImpl;
 import com.ravenrodrigo.professional_portfolio.web.dto.ProjectCreatePostRequest;
+import com.ravenrodrigo.professional_portfolio.web.dto.ProjectGetResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -144,5 +145,25 @@ public class ProjectControllerUnitTest {
                         .content("{ \"projectName\": \"Firs Project\", \"projectDescription\": \"The first project.\", \"projectSourceCode\": \"www.github.com/firstproject\" }")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated());
+    }
+
+    @Test
+    @DisplayName("It should return status ok after a project retrieved by id.")
+    void shouldReturnStatusOkWhenProjectGetWithId() throws Exception {
+        // Given
+        ProjectEntity projectEntity = new ProjectEntity();
+        projectEntity.setProjectId(0L);
+
+        ProjectGetResponse projectPostResponse = new ProjectGetResponse(
+                "First Project.",
+                "This is the first project.",
+                "www.github.com/firstproject"
+        );
+
+        // When
+        when(projectServiceImpl.getProjectById(projectEntity.getProjectId())).thenReturn(projectPostResponse);
+        mockMvc.perform(get("/api/v1/1"))
+                .andExpect(status().isOk());
+
     }
 }

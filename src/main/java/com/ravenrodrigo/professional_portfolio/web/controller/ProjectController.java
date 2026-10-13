@@ -18,6 +18,7 @@ package com.ravenrodrigo.professional_portfolio.web.controller;
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.service.IProjectService;
 import com.ravenrodrigo.professional_portfolio.web.dto.ProjectCreatePostRequest;
+import com.ravenrodrigo.professional_portfolio.web.dto.ProjectGetResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -64,5 +65,10 @@ public class ProjectController {
     public ResponseEntity<ProjectEntity> projectCreate(@RequestBody ProjectCreatePostRequest projectCreatePostRequest) {
         ProjectEntity createdProject = projectService.createProject(projectCreatePostRequest);
         return new ResponseEntity<>(createdProject, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{projectId}")
+    public ResponseEntity<ProjectGetResponse> getProjectById(@PathVariable("projectId") Long projectId) {
+        return  ResponseEntity.ok(projectService.getProjectById(projectId));
     }
 }
