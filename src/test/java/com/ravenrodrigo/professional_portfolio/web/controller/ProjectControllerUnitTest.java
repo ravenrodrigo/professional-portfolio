@@ -29,6 +29,7 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
@@ -151,17 +152,15 @@ public class ProjectControllerUnitTest {
     @DisplayName("It should return status ok after a project retrieved by id.")
     void shouldReturnStatusOkWhenProjectGetWithId() throws Exception {
         // Given
-        ProjectEntity projectEntity = new ProjectEntity();
-        projectEntity.setProjectId(0L);
-
-        ProjectGetResponse projectPostResponse = new ProjectGetResponse(
+        ProjectEntity projectEntity = new ProjectEntity(
+                1L,
                 "First Project.",
                 "This is the first project.",
                 "www.github.com/firstproject"
         );
 
         // When
-        when(projectServiceImpl.getProjectById(projectEntity.getProjectId())).thenReturn(projectPostResponse);
+        when(projectServiceImpl.getProjectById(projectEntity.getProjectId())).thenReturn(Optional.of(projectEntity));
         mockMvc.perform(get("/api/v1/1"))
                 .andExpect(status().isOk());
 
