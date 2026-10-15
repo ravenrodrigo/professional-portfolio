@@ -35,8 +35,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
@@ -53,11 +53,6 @@ public class ProjectServiceUnitTest {
 
     @Mock
     ProjectRepository projectRepository;
-
-    @BeforeEach
-    void init() {
-        MockitoAnnotations.openMocks(this);
-    }
 
     @Test
     @DisplayName("It should list all the projects.")
@@ -185,18 +180,24 @@ public class ProjectServiceUnitTest {
     @DisplayName("It should get a single project.")
     void shouldGetSingleProject() {
         // Arrange
+        Long projectId = 1L;
+
         ProjectEntity projectFromDb = new ProjectEntity(
-                1L,
+                projectId,
                 "Existing Project",
                 "The existing project.",
                 "www.github.com/existingproject"
         );
 
+        when(projectRepository.findById(projectId)).thenReturn(Optional.of(projectFromDb));
+
         // Act
-        ProjectGetResponse project = projectServiceImpl.translateDbToWeb(projectFromDb);
+        Optional<ProjectEntity> project = projectServiceImpl.getProjectById(projectId);
 
         // Assert
-        assertNotNull(project);
-        assertEquals("Existing Project", project.projectName());
+        assertTrue(project.isPresent());
+        assertEquals(projectFromDb, project.get());
+
+        verify(projectRepository).findById(projectId);
     }
 }

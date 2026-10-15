@@ -20,6 +20,7 @@ import com.ravenrodrigo.professional_portfolio.data.repository.ProjectRepository
 import com.ravenrodrigo.professional_portfolio.service.IProjectService;
 import com.ravenrodrigo.professional_portfolio.web.dto.ProjectCreatePostRequest;
 import com.ravenrodrigo.professional_portfolio.web.dto.ProjectGetResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -30,6 +31,7 @@ import java.util.Optional;
 @Service
 public class ProjectServiceImpl implements IProjectService  {
 
+    @Autowired
     private final ProjectRepository projectRepository;
 
     public ProjectServiceImpl(ProjectRepository projectRepository) {
@@ -125,10 +127,7 @@ public class ProjectServiceImpl implements IProjectService  {
      * @return project dto
      */
     @Override
-    public ProjectGetResponse getProjectById(Long id) {
-        ProjectEntity projectEntity = new ProjectEntity();
-        projectEntity.setProjectId(id);
-
-        return translateDbToWeb(projectEntity);
+    public Optional<ProjectEntity> getProjectById(Long id) {
+        return projectRepository.findById(id);
     }
 }

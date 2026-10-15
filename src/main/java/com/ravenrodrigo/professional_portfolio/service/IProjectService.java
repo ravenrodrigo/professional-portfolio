@@ -80,5 +80,5 @@ public interface IProjectService {
      * @param id - project id
      * @return project dto
      */
-    ProjectGetResponse getProjectById(Long id);
+    Optional<ProjectEntity> getProjectById(Long id);
 }
