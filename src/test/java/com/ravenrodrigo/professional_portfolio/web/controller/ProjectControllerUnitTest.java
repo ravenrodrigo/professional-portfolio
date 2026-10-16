@@ -83,7 +83,7 @@ public class ProjectControllerUnitTest {
         // Assert
         assertNotNull(projects);
 
-        mockMvc.perform(get("/api/v1/"))
+        mockMvc.perform(get("/api/v1/admin/projects"))
                 .andExpect(status().isOk());
     }
 
@@ -100,7 +100,7 @@ public class ProjectControllerUnitTest {
 
         // When
         doNothing().when(projectServiceImpl).deleteProject(project);
-        mockMvc.perform(delete("/api/v1/2")
+        mockMvc.perform(delete("/api/v1/admin/projects/2")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{ \"projectId\": 2, \"projectName\": \"Project 2\", \"projectDescription\": \"Second project.\", \"projectSourceCode\": \"www.github.com/secondproject\" }" ))
                 .andExpect(status().isOk());
@@ -123,7 +123,7 @@ public class ProjectControllerUnitTest {
         // When
         doNothing().when(projectServiceImpl).updateProject(existingProject);
 
-        mockMvc.perform(put("/api/v1/project/1")
+        mockMvc.perform(put("/api/v1/admin/projects/1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{ \"projectId\": 1, \"projectName\": \"Updated Project\", \"projectDescription\": \"The updated project.\", \"projectSourceCode\": \"www.github.com/existingproject\" }" ))
                 .andExpect(status().isOk());
@@ -141,7 +141,7 @@ public class ProjectControllerUnitTest {
 
         // When
         when(projectServiceImpl.createProject(any(ProjectCreatePostRequest.class))).thenReturn(projectEntity);
-        mockMvc.perform(post("/api/v1/projects")
+        mockMvc.perform(post("/api/v1/admin/projects")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{ \"projectName\": \"Firs Project\", \"projectDescription\": \"The first project.\", \"projectSourceCode\": \"www.github.com/firstproject\" }")
                         .accept(MediaType.APPLICATION_JSON))
@@ -161,7 +161,7 @@ public class ProjectControllerUnitTest {
 
         // When
         when(projectServiceImpl.getProjectById(projectEntity.getProjectId())).thenReturn(Optional.of(projectEntity));
-        mockMvc.perform(get("/api/v1/1"))
+        mockMvc.perform(get("/api/v1/admin/projects/1"))
                 .andExpect(status().isOk());
 
     }

@@ -31,7 +31,7 @@ import java.util.Optional;
  * @author Raven Rodrigo
  */
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/admin/projects")
 public class ProjectController {
 
     @Autowired
@@ -46,7 +46,7 @@ public class ProjectController {
      *
      * @return projects
      */
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<Iterable<ProjectEntity>> getAllProjects() {
         return ResponseEntity.ok(projectService.getAllProjects());
     }
@@ -56,13 +56,13 @@ public class ProjectController {
         projectService.deleteProject(project);
     }
 
-    @PutMapping("/project/{projectId}")
+    @PutMapping("/{projectId}")
     public ResponseEntity<?> updateProject(@RequestBody ProjectEntity project) {
         projectService.updateProject(project);
         return ResponseEntity.ok("Project updated successfully!");
     }
 
-    @PostMapping("/projects")
+    @PostMapping
     public ResponseEntity<ProjectEntity> projectCreate(@RequestBody ProjectCreatePostRequest projectCreatePostRequest) {
         ProjectEntity createdProject = projectService.createProject(projectCreatePostRequest);
         return new ResponseEntity<>(createdProject, HttpStatus.CREATED);
