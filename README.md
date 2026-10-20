@@ -16,7 +16,7 @@ A compilation of projects made by a professional.
     $ mvn spring-boot:run
     ```
 
-2. Navigate to [http://localhost:8080/api/v1/](http://localhost:8080/api/v1/) in a browser.
+2. Navigate to [http://localhost:8080/api/v1/](http://localhost:8080/api/v1/) and/or [http://localhost:8080/api/v1/admin/](http://localhost:8080/api/v1/admin) in a browser.
 
 ## API
 
