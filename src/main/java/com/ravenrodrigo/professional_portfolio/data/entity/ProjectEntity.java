@@ -31,6 +31,9 @@ public class ProjectEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long projectId;
 
+    @Column(name = "project_thumbnail")
+    private byte[] projectThumbnail;
+
     @Column(name = "project_name")
     private String projectName;
 
@@ -41,6 +44,13 @@ public class ProjectEntity {
     private String projectSourceCode;
 
     public ProjectEntity() {}
+
+    public ProjectEntity(byte[] projectThumbnail, String projectName, String projectDescription, String projectSourceCode) {
+        this.projectThumbnail = projectThumbnail;
+        this.projectName = projectName;
+        this.projectDescription = projectDescription;
+        this.projectSourceCode = projectSourceCode;
+    }
 
     public ProjectEntity(String projectName, String projectDescription, String projectSourceCode) {
         this.projectName = projectName;
@@ -61,6 +71,14 @@ public class ProjectEntity {
 
     public void setProjectId(Long projectId) {
         this.projectId = projectId;
+    }
+
+    public byte[] getProjectThumbnail() {
+        return projectThumbnail;
+    }
+
+    public void setProjectThumbnail(byte[] projectThumbnail) {
+        this.projectThumbnail = projectThumbnail;
     }
 
     public String getProjectName() {
