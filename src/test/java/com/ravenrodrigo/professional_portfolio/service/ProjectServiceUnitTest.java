@@ -95,6 +95,7 @@ public class ProjectServiceUnitTest {
     void shouldTranslateTheWebToDb() {
         // Arrange
         ProjectCreatePostRequest firstProject = new ProjectCreatePostRequest(
+                new byte[]{1, 2, 3,},
                 "First Project",
                 "The first project.",
                 "www.github.com/firstproject"
@@ -154,6 +155,7 @@ public class ProjectServiceUnitTest {
     void shouldSaveTheCreatedProject() {
         // Arrange
         ProjectCreatePostRequest firstProject = new ProjectCreatePostRequest(
+                new byte[]{1, 2, 3},
                 "First Project",
                 "The first project created.",
                 "www.github.com/firstprojectcreated"

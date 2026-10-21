@@ -73,6 +73,7 @@ public class ProjectServiceImpl implements IProjectService  {
     public ProjectEntity translateWebToDb(ProjectCreatePostRequest projectCreatePostRequest) {
         ProjectEntity projectEntity = new ProjectEntity();
 
+        projectEntity.setProjectThumbnail(projectCreatePostRequest.projectThumbnail());
         projectEntity.setProjectName(projectCreatePostRequest.projectName());
         projectEntity.setProjectDescription(projectCreatePostRequest.projectDescription());
         projectEntity.setProjectSourceCode(projectCreatePostRequest.projectSourceCode());
