@@ -20,9 +20,9 @@ package com.ravenrodrigo.professional_portfolio.web.dto;
  *
  * @author Raven Rodrigo
  */
-public record ProjectCreatePostRequest(String projectName, String projectDescription, String projectSourceCode) {
+public record ProjectCreatePostRequest(byte[] projectThumbnail, String projectName, String projectDescription, String projectSourceCode) {
 
     public ProjectCreatePostRequest() {
-        this(null, null, null);
+        this(null, null, null, null);
     }
 }
