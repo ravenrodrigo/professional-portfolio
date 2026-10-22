@@ -17,9 +17,13 @@ package com.ravenrodrigo.professional_portfolio.service;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.data.entity.SkillEntity;
+import com.ravenrodrigo.professional_portfolio.data.repository.OwnerInformationRepository;
+import com.ravenrodrigo.professional_portfolio.service.impl.OwnerInformationServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -39,6 +43,12 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 public class InformationDisplayUnitTest {
 
+    @InjectMocks
+    OwnerInformationServiceImpl ownerInformationServiceImpl;
+
+    @Mock
+    OwnerInformationRepository ownerInformationRepository;
+
     @Test
     @DisplayName("It should create new skill with default constructor.")
     void shouldCreateNewSkillWithDefaultConstructor() {
@@ -49,4 +59,20 @@ public class InformationDisplayUnitTest {
         assertNotNull(skill);
     }
 
+    @Test
+    @DisplayName("It should get the skills.")
+    void shouldGetTheSkills() {
+        // Arrange
+        Iterable<SkillEntity> expectedSkills = Arrays.asList(
+                new SkillEntity(), new SkillEntity()
+        );
+
+        // Act
+        when(ownerInformationRepository.findAll()).thenReturn(expectedSkills);
+        Iterable<SkillEntity> actualSkills = ownerInformationRepository.findAll();
+
+        // Assert
+        assertNotNull(actualSkills);
+        assertEquals(2, ((Collection<?>) actualSkills).size());
+    }
 }
