@@ -38,4 +38,9 @@ public class SkillEntity {
     private String skillDescription;
 
     public SkillEntity() {}
+
+    public SkillEntity(String skillName, String skillDescription) {
+        this.skillName = skillName;
+        this.skillDescription = skillDescription;
+    }
 }
