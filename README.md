@@ -41,6 +41,14 @@ The following are the services that manages the project/s.
 | Update a Project | PUT | `/api/v1/admin/projects/{projectId}` |      Project Entity      | Modify the project |
 | Delete a Project | DELETE | `/api/v1/admin/projects/{projectId}` | Project Entity | Delete a project |
 
+### Information Management
+
+The following are the services that manages the information of the owner.
+
+|    Service Name     | HTTP Method |            URL             | Parameter |    Summary     |
+|:-------------------:|:-----------:|:--------------------------:|:---------:|:--------------:|
+| Retrieve all Skills |     GET     | `/api/v1/admin/ownersinfo` |   None    | Get all skills |
+
 ## License
 
 The license for this source code is _Apache 2.0_ License.
