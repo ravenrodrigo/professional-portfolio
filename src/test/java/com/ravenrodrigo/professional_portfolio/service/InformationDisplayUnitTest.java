@@ -19,6 +19,7 @@ import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.data.entity.SkillEntity;
 import com.ravenrodrigo.professional_portfolio.data.repository.OwnerInformationRepository;
 import com.ravenrodrigo.professional_portfolio.service.impl.OwnerInformationServiceImpl;
+import com.ravenrodrigo.professional_portfolio.web.dto.SkillGetResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -74,5 +75,22 @@ public class InformationDisplayUnitTest {
         // Assert
         assertNotNull(actualSkills);
         assertEquals(2, ((Collection<?>) actualSkills).size());
+    }
+
+    @Test
+    @DisplayName("It should translate the skills from database to web.")
+    void shouldTranslateTheDbToWeb() {
+        // Arrange
+        SkillEntity skillEntity = new SkillEntity();
+        skillEntity.setSkillName("Backend");
+        skillEntity.setSkillDescription("Develop backend services and APIs.");
+
+        // Act
+        SkillGetResponse skillGetResponse = ownerInformationServiceImpl.translateSkillToWeb(skillEntity);
+
+        // Assert
+        assertNotNull(skillGetResponse);
+        assertEquals(skillEntity.getSkillName(), skillGetResponse.skillName());
+        assertEquals(skillEntity.getSkillDescription(), skillGetResponse.skillDescription());
     }
 }

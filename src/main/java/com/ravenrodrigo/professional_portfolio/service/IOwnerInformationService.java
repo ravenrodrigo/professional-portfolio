@@ -16,6 +16,7 @@
 package com.ravenrodrigo.professional_portfolio.service;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.SkillEntity;
+import com.ravenrodrigo.professional_portfolio.web.dto.SkillGetResponse;
 import org.springframework.stereotype.Service;
 
 /**
@@ -32,4 +33,12 @@ public interface IOwnerInformationService {
      * @return skills
      */
     Iterable<SkillEntity> getAllSkills();
+
+    /**
+     * A method that return a dto get response of skill.
+     *
+     * @param skillEntity - skill
+     * @return dto skill
+     */
+    SkillGetResponse translateSkillToWeb(SkillEntity skillEntity);
 }

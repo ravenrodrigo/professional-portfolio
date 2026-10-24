@@ -18,6 +18,7 @@ package com.ravenrodrigo.professional_portfolio.service.impl;
 import com.ravenrodrigo.professional_portfolio.data.entity.SkillEntity;
 import com.ravenrodrigo.professional_portfolio.data.repository.OwnerInformationRepository;
 import com.ravenrodrigo.professional_portfolio.service.IOwnerInformationService;
+import com.ravenrodrigo.professional_portfolio.web.dto.SkillGetResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,5 +45,19 @@ public class OwnerInformationServiceImpl implements IOwnerInformationService {
     @Override
     public Iterable<SkillEntity> getAllSkills() {
         return this.ownerInformationRepository.findAll();
+    }
+
+    /**
+     * A method that return a dto get response of skill.
+     *
+     * @param skillEntity - skill
+     * @return dto skill
+     */
+    @Override
+    public SkillGetResponse translateSkillToWeb(SkillEntity skillEntity) {
+        return new SkillGetResponse(
+                skillEntity.getSkillName(),
+                skillEntity.getSkillDescription()
+        );
     }
 }
