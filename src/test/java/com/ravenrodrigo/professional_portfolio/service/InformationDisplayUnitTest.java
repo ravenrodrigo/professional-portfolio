@@ -19,6 +19,7 @@ import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.data.entity.SkillEntity;
 import com.ravenrodrigo.professional_portfolio.data.repository.OwnerInformationRepository;
 import com.ravenrodrigo.professional_portfolio.service.impl.OwnerInformationServiceImpl;
+import com.ravenrodrigo.professional_portfolio.web.dto.SkillCreatePostRequest;
 import com.ravenrodrigo.professional_portfolio.web.dto.SkillGetResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -92,5 +93,27 @@ public class InformationDisplayUnitTest {
         assertNotNull(skillGetResponse);
         assertEquals(skillEntity.getSkillName(), skillGetResponse.skillName());
         assertEquals(skillEntity.getSkillDescription(), skillGetResponse.skillDescription());
+    }
+
+    @Test
+    @DisplayName("It should translate the skill from web to database.")
+    void shouldTranslateTheWebToDb() {
+        // Arrange
+        SkillCreatePostRequest skillOne = new SkillCreatePostRequest(
+                "Skill one",
+                "The skill one."
+        );
+
+        SkillEntity skillEntity = new SkillEntity(
+                "Skill one",
+                "The skill one."
+        );
+
+        // Act
+        SkillEntity actualSkill = ownerInformationServiceImpl.translateSkillToDb(skillOne);
+
+        // Assert
+        assertNotNull(actualSkill);
+        assertEquals(skillEntity.getSkillName(), actualSkill.getSkillName());
     }
 }

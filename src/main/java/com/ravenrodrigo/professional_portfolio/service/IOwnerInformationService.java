@@ -16,6 +16,7 @@
 package com.ravenrodrigo.professional_portfolio.service;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.SkillEntity;
+import com.ravenrodrigo.professional_portfolio.web.dto.SkillCreatePostRequest;
 import com.ravenrodrigo.professional_portfolio.web.dto.SkillGetResponse;
 import org.springframework.stereotype.Service;
 
@@ -41,4 +42,13 @@ public interface IOwnerInformationService {
      * @return dto skill
      */
     SkillGetResponse translateSkillToWeb(SkillEntity skillEntity);
+
+    /**
+     * A method that translate the skill in web to database.
+     *
+     * @param skillCreatePostRequest - skill post request
+     *
+     * @return skill entity
+     */
+    SkillEntity translateSkillToDb(SkillCreatePostRequest skillCreatePostRequest);
 }
