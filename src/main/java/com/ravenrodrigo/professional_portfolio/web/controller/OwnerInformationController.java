@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Raven Rodrigo
  */
 @RestController
-@RequestMapping("/api/v1/admin/ownersinfo")
+@RequestMapping("/api/v1")
 public class OwnerInformationController {
 
     @Autowired
@@ -44,7 +44,7 @@ public class OwnerInformationController {
      *
      * @return skills
      */
-    @GetMapping
+    @GetMapping("/admin/ownersinfo")
     public ResponseEntity<Iterable<SkillEntity>> listAllSkills() {
         return ResponseEntity.ok(ownerInformationService.getAllSkills());
     }

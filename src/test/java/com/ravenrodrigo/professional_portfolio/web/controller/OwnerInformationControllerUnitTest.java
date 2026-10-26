@@ -49,7 +49,7 @@ public class OwnerInformationControllerUnitTest {
 
     @Test
     @DisplayName("It should return status ok after all skills retrieved.")
-    void shouldReturnStatusOkWhenProjectGetAll() throws Exception {
+    void shouldReturnStatusOkWhenSkillsGetAll() throws Exception {
        // Given
         SkillEntity firstSkill = new SkillEntity(
                 "Skill One",
