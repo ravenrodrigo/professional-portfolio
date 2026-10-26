@@ -29,6 +29,14 @@ When the embedded web server is running, swagger is enabled on the development e
 
 ## Services
 
+### Project Display
+
+The following are the services that display the projects in the homepage.
+
+|    Service Name    | HTTP Method |          URL          |        Parameter         |      Summary       |
+|:------------------:|:-----------:|:---------------------:|:------------------------:|:------------------:|
+| Retrieve all Projects | GET |       `/api/v1`       |           None           |  Get all projects  |  
+
 ### Project Management
 
 The following are the services that manages the project/s.
