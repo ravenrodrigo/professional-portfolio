@@ -116,4 +116,17 @@ public class InformationDisplayUnitTest {
         assertNotNull(actualSkill);
         assertEquals(skillEntity.getSkillName(), actualSkill.getSkillName());
     }
+
+    @Test
+    @DisplayName("It should delete a skill.")
+    void shouldDeleteASkill() {
+        // Arrange
+        SkillEntity skill = new SkillEntity(
+                "Skill one",
+                "The first skill"
+        );
+
+        // Act
+        ownerInformationServiceImpl.deleteSkill(skill);
+    }
 }

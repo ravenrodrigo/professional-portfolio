@@ -51,4 +51,11 @@ public interface IOwnerInformationService {
      * @return skill entity
      */
     SkillEntity translateSkillToDb(SkillCreatePostRequest skillCreatePostRequest);
+
+    /**
+     * A method to delete a skill.
+     *
+     * @param skillEntity - Skill Entity
+     */
+    void deleteSkill(SkillEntity skillEntity);
 }

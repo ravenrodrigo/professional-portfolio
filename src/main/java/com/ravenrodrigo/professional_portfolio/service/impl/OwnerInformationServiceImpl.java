@@ -78,4 +78,14 @@ public class OwnerInformationServiceImpl implements IOwnerInformationService {
 
         return  skillEntity;
     }
+
+    /**
+     * A method that delete a skill.
+     *
+     * @param skillEntity - Skill Entity
+     */
+    @Override
+    public void deleteSkill(SkillEntity skillEntity) {
+        ownerInformationRepository.delete(skillEntity);
+    }
 }
