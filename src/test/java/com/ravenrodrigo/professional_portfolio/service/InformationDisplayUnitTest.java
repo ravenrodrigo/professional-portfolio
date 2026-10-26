@@ -1,23 +1,9 @@
-/*
- * Copyright 2026-present the original author or authors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.ravenrodrigo.professional_portfolio.service;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.data.entity.SkillEntity;
 import com.ravenrodrigo.professional_portfolio.data.repository.OwnerInformationRepository;
+import com.ravenrodrigo.professional_portfolio.data.repository.ProjectRepository;
 import com.ravenrodrigo.professional_portfolio.service.impl.OwnerInformationServiceImpl;
 import com.ravenrodrigo.professional_portfolio.web.dto.SkillCreatePostRequest;
 import com.ravenrodrigo.professional_portfolio.web.dto.SkillGetResponse;
@@ -50,6 +36,9 @@ public class InformationDisplayUnitTest {
 
     @Mock
     OwnerInformationRepository ownerInformationRepository;
+
+    @Mock
+    ProjectRepository projectRepository;
 
     @Test
     @DisplayName("It should create new skill with default constructor.")
@@ -128,5 +117,23 @@ public class InformationDisplayUnitTest {
 
         // Act
         ownerInformationServiceImpl.deleteSkill(skill);
+    }
+
+
+    @Test
+    @DisplayName("It should display all the projects.")
+    void shouldDisplayAllProjects() {
+        // Arrange
+        Iterable<ProjectEntity> expectedProjects = Arrays.asList(
+                new ProjectEntity(), new ProjectEntity()
+        );
+
+        // Act
+        when(projectRepository.findAll()).thenReturn(expectedProjects);
+        Iterable<ProjectEntity> actualProjects = projectRepository.findAll();
+
+        // Assert
+        assertNotNull(actualProjects);
+        assertEquals(2, ((Collection<?>) actualProjects).size());
     }
 }

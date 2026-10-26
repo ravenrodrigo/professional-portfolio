@@ -15,6 +15,7 @@
  */
 package com.ravenrodrigo.professional_portfolio.service;
 
+import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.data.entity.SkillEntity;
 import com.ravenrodrigo.professional_portfolio.web.dto.SkillCreatePostRequest;
 import com.ravenrodrigo.professional_portfolio.web.dto.SkillGetResponse;
@@ -58,4 +59,12 @@ public interface IOwnerInformationService {
      * @param skillEntity - Skill Entity
      */
     void deleteSkill(SkillEntity skillEntity);
+
+    /**
+     * Display all the projects.
+     *
+     * @return projects
+     */
+    Iterable<ProjectEntity> displayProjects();
+
 }

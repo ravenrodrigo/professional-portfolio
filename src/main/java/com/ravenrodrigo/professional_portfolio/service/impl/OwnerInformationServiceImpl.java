@@ -15,8 +15,10 @@
  */
 package com.ravenrodrigo.professional_portfolio.service.impl;
 
+import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.data.entity.SkillEntity;
 import com.ravenrodrigo.professional_portfolio.data.repository.OwnerInformationRepository;
+import com.ravenrodrigo.professional_portfolio.data.repository.ProjectRepository;
 import com.ravenrodrigo.professional_portfolio.service.IOwnerInformationService;
 import com.ravenrodrigo.professional_portfolio.web.dto.SkillCreatePostRequest;
 import com.ravenrodrigo.professional_portfolio.web.dto.SkillGetResponse;
@@ -34,8 +36,12 @@ public class OwnerInformationServiceImpl implements IOwnerInformationService {
     @Autowired
     private final OwnerInformationRepository ownerInformationRepository;
 
-    public OwnerInformationServiceImpl(OwnerInformationRepository ownerInformationRepository) {
+    @Autowired
+    private final ProjectRepository projectRepository;
+
+    public OwnerInformationServiceImpl(OwnerInformationRepository ownerInformationRepository, ProjectRepository projectRepository) {
         this.ownerInformationRepository = ownerInformationRepository;
+        this.projectRepository = projectRepository;
     }
 
     /**
@@ -87,5 +93,15 @@ public class OwnerInformationServiceImpl implements IOwnerInformationService {
     @Override
     public void deleteSkill(SkillEntity skillEntity) {
         ownerInformationRepository.delete(skillEntity);
+    }
+
+    /**
+     * Display all the projects.
+     *
+     * @return projects
+     */
+    @Override
+    public Iterable<ProjectEntity> displayProjects() {
+        return this.projectRepository.findAll();
     }
 }
