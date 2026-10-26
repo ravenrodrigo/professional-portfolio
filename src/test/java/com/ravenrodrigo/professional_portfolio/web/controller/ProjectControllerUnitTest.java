@@ -161,7 +161,7 @@ public class ProjectControllerUnitTest {
 
         // When
         when(projectServiceImpl.getProjectById(projectEntity.getProjectId())).thenReturn(Optional.of(projectEntity));
-        mockMvc.perform(get("/api/v1/admin/projects/1"))
+        mockMvc.perform(get("/api/v1/1"))
                 .andExpect(status().isOk());
 
     }
