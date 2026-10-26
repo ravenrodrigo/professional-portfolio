@@ -37,6 +37,14 @@ The following are the services that display the projects in the homepage.
 |:------------------:|:-----------:|:---------------------:|:------------------------:|:------------------:|
 | Retrieve all Projects | GET |       `/api/v1`       |           None           |  Get all projects  |  
 
+### Information Display
+
+The following are the services that display the information of the owner.
+
+|  Service Name  | HTTP Method |          URL          |        Parameter         |      Summary       |
+|:--------------:|:-----------:|:---------------------:|:------------------------:|:------------------:|
+| Display Skills | GET |       `/api/v1`       |           None           | Display the skills |  
+
 ### Project Management
 
 The following are the services that manages the project/s.
