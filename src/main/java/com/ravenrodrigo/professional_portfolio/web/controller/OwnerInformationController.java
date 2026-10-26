@@ -48,4 +48,14 @@ public class OwnerInformationController {
     public ResponseEntity<Iterable<SkillEntity>> listAllSkills() {
         return ResponseEntity.ok(ownerInformationService.getAllSkills());
     }
+
+    /**
+     * Display the skills on the homepage.
+     *
+     * @return skills
+     */
+    @GetMapping
+    public ResponseEntity<Iterable<SkillEntity>> displaySkills() {
+        return ResponseEntity.ok(ownerInformationService.getAllSkills());
+    }
 }

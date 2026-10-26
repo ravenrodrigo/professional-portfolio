@@ -72,4 +72,30 @@ public class OwnerInformationControllerUnitTest {
         mockMvc.perform(get("/api/v1/admin/ownersinfo"))
                 .andExpect(status().isOk());
     }
+
+    @Test
+    @DisplayName("It should return status ok after all skills retrieved.")
+    void shouldReturnStatusOkWhenSkillsAreDisplayed() throws Exception {
+        // Given
+        SkillEntity firstSkill = new SkillEntity(
+                "Skill One",
+                "The first skill"
+        );
+
+        SkillEntity secondSkill = new SkillEntity(
+                "Skill Two",
+                "The skill two"
+        );
+
+        List<SkillEntity> skills = List.of(firstSkill, secondSkill);
+
+        // When
+        when(ownerInformationServiceImpl.getAllSkills()).thenReturn(skills);
+
+        // Assert
+        assertNotNull(skills);
+
+        mockMvc.perform(get("/api/v1"))
+                .andExpect(status().isOk());
+    }
 }
