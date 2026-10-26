@@ -88,6 +88,41 @@ public class ProjectControllerUnitTest {
     }
 
     @Test
+    @DisplayName("It should return status ok after all projects retrieved.")
+    void shouldReturnStatusOkWhenProjectDisplayAll() throws Exception {
+        // Given
+        ProjectEntity firstProject = new ProjectEntity(
+                "First Project",
+                "The first project.",
+                "www.github.com/firstproject"
+        );
+
+        ProjectEntity secondProject = new ProjectEntity(
+                "Second Project",
+                "The second project.",
+                "www.github.com/secondproject"
+        );
+
+        ProjectEntity thirdProject = new ProjectEntity(
+                "Third Project",
+                "The third project.",
+                "www.github.com/thirdproject"
+        );
+
+        List<ProjectEntity> projects = List.of(firstProject, secondProject, thirdProject);
+
+        // When
+        when(projectServiceImpl.getAllProjects()).thenReturn(projects);
+
+        // Assert
+        assertNotNull(projects);
+
+        mockMvc.perform(get("/api/v1"))
+                .andExpect(status().isOk());
+    }
+
+
+    @Test
     @DisplayName("It should return status ok when the project is deleted.")
     void shouldReturnStatusOkWhenProjectIsDeleted() throws Exception {
         // Given

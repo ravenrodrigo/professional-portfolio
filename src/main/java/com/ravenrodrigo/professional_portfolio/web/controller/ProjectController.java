@@ -51,6 +51,16 @@ public class ProjectController {
         return ResponseEntity.ok(projectService.getAllProjects());
     }
 
+    /**
+     * Display the list of projects.
+     *
+     * @return projects
+     */
+    @GetMapping
+    public ResponseEntity<Iterable<ProjectEntity>> displayAllProjects() {
+        return ResponseEntity.ok(projectService.getAllProjects());
+    }
+
     @DeleteMapping("/admin/projects/{projectId}")
     public void deleteProject(@RequestBody ProjectEntity project) {
         projectService.deleteProject(project);
