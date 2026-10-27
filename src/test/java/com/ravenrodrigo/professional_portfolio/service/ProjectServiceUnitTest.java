@@ -19,7 +19,7 @@ import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.data.repository.ProjectRepository;
 import com.ravenrodrigo.professional_portfolio.service.impl.ProjectServiceImpl;
 import com.ravenrodrigo.professional_portfolio.web.dto.ProjectRequest;
-import com.ravenrodrigo.professional_portfolio.web.dto.ProjectGetResponse;
+import com.ravenrodrigo.professional_portfolio.web.dto.ProjectResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -79,10 +79,10 @@ public class ProjectServiceUnitTest {
         projectEntity.setProjectSourceCode("www.github.com/firstproject");
 
         // Act
-        ProjectGetResponse projectGetResponse = projectServiceImpl.translateDbToWeb(projectEntity);
+        ProjectResponse projectResponse = projectServiceImpl.translateDbToWeb(projectEntity);
 
         // Assert
-        assertNotNull(projectGetResponse);
+        assertNotNull(projectResponse);
         assertEquals("First Project", projectEntity.getProjectName());
         assertEquals("The first project.", projectEntity.getProjectDescription());
         assertEquals("www.github.com/firstproject", projectEntity.getProjectSourceCode());

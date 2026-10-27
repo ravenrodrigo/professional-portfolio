@@ -19,7 +19,7 @@ import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.data.repository.ProjectRepository;
 import com.ravenrodrigo.professional_portfolio.service.IProjectService;
 import com.ravenrodrigo.professional_portfolio.web.dto.ProjectRequest;
-import com.ravenrodrigo.professional_portfolio.web.dto.ProjectGetResponse;
+import com.ravenrodrigo.professional_portfolio.web.dto.ProjectResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,8 +55,8 @@ public class ProjectServiceImpl implements IProjectService  {
      * @return projectGetResponse
      */
     @Override
-    public ProjectGetResponse translateDbToWeb(ProjectEntity projectEntity) {
-        return new ProjectGetResponse(
+    public ProjectResponse translateDbToWeb(ProjectEntity projectEntity) {
+        return new ProjectResponse(
                 projectEntity.getProjectName(),
                 projectEntity.getProjectDescription(),
                 projectEntity.getProjectSourceCode()

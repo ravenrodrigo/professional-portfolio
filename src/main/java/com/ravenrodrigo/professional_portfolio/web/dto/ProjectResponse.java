@@ -20,8 +20,8 @@ package com.ravenrodrigo.professional_portfolio.web.dto;
  *
  * @author Raven Rodrigo
  */
-public record ProjectGetResponse(String projectName, String projectDescription, String projectSourceCode) {
-    ProjectGetResponse() {
+public record ProjectResponse(String projectName, String projectDescription, String projectSourceCode) {
+    ProjectResponse() {
         this(null, null, null);
     }
 }
