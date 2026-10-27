@@ -20,9 +20,9 @@ package com.ravenrodrigo.professional_portfolio.web.dto;
  *
  * @author Raven Rodrigo
  */
-public record SkillCreatePostRequest(String skillName, String skillDescription) {
+public record SkillRequest(String skillName, String skillDescription) {
 
-    public SkillCreatePostRequest() {
+    public SkillRequest() {
         this(null, null);
     }
 }

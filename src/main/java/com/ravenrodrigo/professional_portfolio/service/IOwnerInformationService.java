@@ -17,7 +17,7 @@ package com.ravenrodrigo.professional_portfolio.service;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.data.entity.SkillEntity;
-import com.ravenrodrigo.professional_portfolio.web.dto.SkillCreatePostRequest;
+import com.ravenrodrigo.professional_portfolio.web.dto.SkillRequest;
 import com.ravenrodrigo.professional_portfolio.web.dto.SkillGetResponse;
 import org.springframework.stereotype.Service;
 
@@ -47,11 +47,11 @@ public interface IOwnerInformationService {
     /**
      * A method that translate the skill in web to database.
      *
-     * @param skillCreatePostRequest - skill post request
+     * @param skillRequest - skill post request
      *
      * @return skill entity
      */
-    SkillEntity translateSkillToDb(SkillCreatePostRequest skillCreatePostRequest);
+    SkillEntity translateSkillToDb(SkillRequest skillRequest);
 
     /**
      * A method to delete a skill.

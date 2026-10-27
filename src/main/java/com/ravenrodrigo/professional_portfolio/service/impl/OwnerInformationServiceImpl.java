@@ -20,7 +20,7 @@ import com.ravenrodrigo.professional_portfolio.data.entity.SkillEntity;
 import com.ravenrodrigo.professional_portfolio.data.repository.OwnerInformationRepository;
 import com.ravenrodrigo.professional_portfolio.data.repository.ProjectRepository;
 import com.ravenrodrigo.professional_portfolio.service.IOwnerInformationService;
-import com.ravenrodrigo.professional_portfolio.web.dto.SkillCreatePostRequest;
+import com.ravenrodrigo.professional_portfolio.web.dto.SkillRequest;
 import com.ravenrodrigo.professional_portfolio.web.dto.SkillGetResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,16 +71,16 @@ public class OwnerInformationServiceImpl implements IOwnerInformationService {
     /**
      * A method that translate the skill in web to database.
      *
-     * @param skillCreatePostRequest - skill post request
+     * @param skillRequest - skill post request
      *
      * @return skill entity
      */
     @Override
-    public SkillEntity translateSkillToDb(SkillCreatePostRequest skillCreatePostRequest) {
+    public SkillEntity translateSkillToDb(SkillRequest skillRequest) {
         SkillEntity skillEntity = new SkillEntity();
 
-        skillEntity.setSkillName(skillCreatePostRequest.skillName());
-        skillEntity.setSkillDescription(skillCreatePostRequest.skillDescription());
+        skillEntity.setSkillName(skillRequest.skillName());
+        skillEntity.setSkillDescription(skillRequest.skillDescription());
 
         return  skillEntity;
     }
