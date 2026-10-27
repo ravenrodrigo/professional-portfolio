@@ -18,7 +18,7 @@ package com.ravenrodrigo.professional_portfolio.service.impl;
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.data.repository.ProjectRepository;
 import com.ravenrodrigo.professional_portfolio.service.IProjectService;
-import com.ravenrodrigo.professional_portfolio.web.dto.ProjectCreatePostRequest;
+import com.ravenrodrigo.professional_portfolio.web.dto.ProjectRequest;
 import com.ravenrodrigo.professional_portfolio.web.dto.ProjectGetResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -66,17 +66,17 @@ public class ProjectServiceImpl implements IProjectService  {
     /**
      * A method that translate the project in web to database.
      *
-     * @param projectCreatePostRequest - Project Create POST request
+     * @param projectRequest - Project Create POST request
      * @return projectEntity
      */
     @Override
-    public ProjectEntity translateWebToDb(ProjectCreatePostRequest projectCreatePostRequest) {
+    public ProjectEntity translateWebToDb(ProjectRequest projectRequest) {
         ProjectEntity projectEntity = new ProjectEntity();
 
-        projectEntity.setProjectThumbnail(projectCreatePostRequest.projectThumbnail());
-        projectEntity.setProjectName(projectCreatePostRequest.projectName());
-        projectEntity.setProjectDescription(projectCreatePostRequest.projectDescription());
-        projectEntity.setProjectSourceCode(projectCreatePostRequest.projectSourceCode());
+        projectEntity.setProjectThumbnail(projectRequest.projectThumbnail());
+        projectEntity.setProjectName(projectRequest.projectName());
+        projectEntity.setProjectDescription(projectRequest.projectDescription());
+        projectEntity.setProjectSourceCode(projectRequest.projectSourceCode());
 
         return projectEntity;
     }
@@ -112,12 +112,12 @@ public class ProjectServiceImpl implements IProjectService  {
     /**
      * A method for project creation.
      *
-     * @param projectCreatePostRequest - project from client
+     * @param projectRequest - project from client
      * @return createdProject
      */
     @Override
-    public ProjectEntity createProject(ProjectCreatePostRequest projectCreatePostRequest) {
-        ProjectEntity createdProject = translateWebToDb(projectCreatePostRequest);
+    public ProjectEntity createProject(ProjectRequest projectRequest) {
+        ProjectEntity createdProject = translateWebToDb(projectRequest);
         return createdProject;
     }
 

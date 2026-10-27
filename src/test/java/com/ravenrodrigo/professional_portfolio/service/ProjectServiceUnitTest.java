@@ -18,16 +18,14 @@ package com.ravenrodrigo.professional_portfolio.service;
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.data.repository.ProjectRepository;
 import com.ravenrodrigo.professional_portfolio.service.impl.ProjectServiceImpl;
-import com.ravenrodrigo.professional_portfolio.web.dto.ProjectCreatePostRequest;
+import com.ravenrodrigo.professional_portfolio.web.dto.ProjectRequest;
 import com.ravenrodrigo.professional_portfolio.web.dto.ProjectGetResponse;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -94,7 +92,7 @@ public class ProjectServiceUnitTest {
     @DisplayName("It should translate the project from web to db.")
     void shouldTranslateTheWebToDb() {
         // Arrange
-        ProjectCreatePostRequest firstProject = new ProjectCreatePostRequest(
+        ProjectRequest firstProject = new ProjectRequest(
                 new byte[]{1, 2, 3,},
                 "First Project",
                 "The first project.",
@@ -154,7 +152,7 @@ public class ProjectServiceUnitTest {
     @DisplayName("It should save the created project.")
     void shouldSaveTheCreatedProject() {
         // Arrange
-        ProjectCreatePostRequest firstProject = new ProjectCreatePostRequest(
+        ProjectRequest firstProject = new ProjectRequest(
                 new byte[]{1, 2, 3},
                 "First Project",
                 "The first project created.",

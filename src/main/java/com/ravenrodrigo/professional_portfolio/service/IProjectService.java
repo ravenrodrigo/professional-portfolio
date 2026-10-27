@@ -16,7 +16,7 @@
 package com.ravenrodrigo.professional_portfolio.service;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
-import com.ravenrodrigo.professional_portfolio.web.dto.ProjectCreatePostRequest;
+import com.ravenrodrigo.professional_portfolio.web.dto.ProjectRequest;
 import com.ravenrodrigo.professional_portfolio.web.dto.ProjectGetResponse;
 import org.springframework.stereotype.Service;
 
@@ -47,10 +47,10 @@ public interface IProjectService {
     /**
      * A method that translate the project in web to database.
      *
-     * @param projectCreatePostRequest - Project Create POST request.
+     * @param projectRequest - Project Create POST request.
      * @return projectEntity
      */
-    ProjectEntity translateWebToDb(ProjectCreatePostRequest projectCreatePostRequest);
+    ProjectEntity translateWebToDb(ProjectRequest projectRequest);
 
     /**
      * A method to delete a project.
@@ -69,10 +69,10 @@ public interface IProjectService {
     /**
      * A method for project creation.
      *
-     * @param projectCreatePostRequest - project from client
+     * @param projectRequest - project from client
      * @return createdProject
      */
-    ProjectEntity createProject(ProjectCreatePostRequest projectCreatePostRequest);
+    ProjectEntity createProject(ProjectRequest projectRequest);
 
     /**
      * A method that retrieve a project by id.

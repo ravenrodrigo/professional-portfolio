@@ -17,7 +17,7 @@ package com.ravenrodrigo.professional_portfolio.web.controller;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.service.IProjectService;
-import com.ravenrodrigo.professional_portfolio.web.dto.ProjectCreatePostRequest;
+import com.ravenrodrigo.professional_portfolio.web.dto.ProjectRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +31,7 @@ import java.util.Optional;
  * @author Raven Rodrigo
  */
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/test")
 public class ProjectController {
 
     @Autowired
@@ -73,8 +73,8 @@ public class ProjectController {
     }
 
     @PostMapping("/admin/projects")
-    public ResponseEntity<ProjectEntity> projectCreate(@RequestBody ProjectCreatePostRequest projectCreatePostRequest) {
-        ProjectEntity createdProject = projectService.createProject(projectCreatePostRequest);
+    public ResponseEntity<ProjectEntity> projectCreate(@RequestBody ProjectRequest projectRequest) {
+        ProjectEntity createdProject = projectService.createProject(projectRequest);
         return new ResponseEntity<>(createdProject, HttpStatus.CREATED);
     }
 

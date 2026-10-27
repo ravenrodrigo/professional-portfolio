@@ -17,8 +17,7 @@ package com.ravenrodrigo.professional_portfolio.web.controller;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.service.impl.ProjectServiceImpl;
-import com.ravenrodrigo.professional_portfolio.web.dto.ProjectCreatePostRequest;
-import com.ravenrodrigo.professional_portfolio.web.dto.ProjectGetResponse;
+import com.ravenrodrigo.professional_portfolio.web.dto.ProjectRequest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -175,7 +174,7 @@ public class ProjectControllerUnitTest {
         );
 
         // When
-        when(projectServiceImpl.createProject(any(ProjectCreatePostRequest.class))).thenReturn(projectEntity);
+        when(projectServiceImpl.createProject(any(ProjectRequest.class))).thenReturn(projectEntity);
         mockMvc.perform(post("/api/v1/admin/projects")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{ \"projectName\": \"Firs Project\", \"projectDescription\": \"The first project.\", \"projectSourceCode\": \"www.github.com/firstproject\" }")
