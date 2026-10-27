@@ -6,7 +6,7 @@ import com.ravenrodrigo.professional_portfolio.data.repository.OwnerInformationR
 import com.ravenrodrigo.professional_portfolio.data.repository.ProjectRepository;
 import com.ravenrodrigo.professional_portfolio.service.impl.OwnerInformationServiceImpl;
 import com.ravenrodrigo.professional_portfolio.web.dto.SkillRequest;
-import com.ravenrodrigo.professional_portfolio.web.dto.SkillGetResponse;
+import com.ravenrodrigo.professional_portfolio.web.dto.SkillResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -76,12 +76,12 @@ public class InformationDisplayUnitTest {
         skillEntity.setSkillDescription("Develop backend services and APIs.");
 
         // Act
-        SkillGetResponse skillGetResponse = ownerInformationServiceImpl.translateSkillToWeb(skillEntity);
+        SkillResponse skillResponse = ownerInformationServiceImpl.translateSkillToWeb(skillEntity);
 
         // Assert
-        assertNotNull(skillGetResponse);
-        assertEquals(skillEntity.getSkillName(), skillGetResponse.skillName());
-        assertEquals(skillEntity.getSkillDescription(), skillGetResponse.skillDescription());
+        assertNotNull(skillResponse);
+        assertEquals(skillEntity.getSkillName(), skillResponse.skillName());
+        assertEquals(skillEntity.getSkillDescription(), skillResponse.skillDescription());
     }
 
     @Test

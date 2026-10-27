@@ -21,7 +21,7 @@ import com.ravenrodrigo.professional_portfolio.data.repository.OwnerInformationR
 import com.ravenrodrigo.professional_portfolio.data.repository.ProjectRepository;
 import com.ravenrodrigo.professional_portfolio.service.IOwnerInformationService;
 import com.ravenrodrigo.professional_portfolio.web.dto.SkillRequest;
-import com.ravenrodrigo.professional_portfolio.web.dto.SkillGetResponse;
+import com.ravenrodrigo.professional_portfolio.web.dto.SkillResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -61,8 +61,8 @@ public class OwnerInformationServiceImpl implements IOwnerInformationService {
      * @return dto skill
      */
     @Override
-    public SkillGetResponse translateSkillToWeb(SkillEntity skillEntity) {
-        return new SkillGetResponse(
+    public SkillResponse translateSkillToWeb(SkillEntity skillEntity) {
+        return new SkillResponse(
                 skillEntity.getSkillName(),
                 skillEntity.getSkillDescription()
         );
