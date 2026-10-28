@@ -17,7 +17,7 @@ package com.ravenrodrigo.professional_portfolio.service;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.data.repository.ProjectRepository;
-import com.ravenrodrigo.professional_portfolio.service.impl.ProjectServiceImpl;
+import com.ravenrodrigo.professional_portfolio.service.impl.ProjectCompilationServiceImpl;
 import com.ravenrodrigo.professional_portfolio.web.dto.ProjectRequest;
 import com.ravenrodrigo.professional_portfolio.web.dto.ProjectResponse;
 import org.junit.jupiter.api.DisplayName;
@@ -47,7 +47,7 @@ import static org.mockito.Mockito.when;
 public class ProjectServiceUnitTest {
 
     @InjectMocks
-    ProjectServiceImpl projectServiceImpl;
+    ProjectCompilationServiceImpl projectServiceImpl;
 
     @Mock
     ProjectRepository projectRepository;

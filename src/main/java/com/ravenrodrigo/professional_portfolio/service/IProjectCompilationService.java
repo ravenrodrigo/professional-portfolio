@@ -28,7 +28,7 @@ import java.util.Optional;
  * @author Raven Rodrigo
  */
 @Service
-public interface IProjectService {
+public interface IProjectCompilationService {
     /**
      * List all the projects.
      *

@@ -16,7 +16,7 @@
 package com.ravenrodrigo.professional_portfolio.web.controller;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
-import com.ravenrodrigo.professional_portfolio.service.impl.ProjectServiceImpl;
+import com.ravenrodrigo.professional_portfolio.service.impl.ProjectCompilationServiceImpl;
 import com.ravenrodrigo.professional_portfolio.web.dto.ProjectRequest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -50,7 +50,7 @@ public class ProjectControllerUnitTest {
     MockMvc mockMvc;
 
     @MockitoBean
-    ProjectServiceImpl projectServiceImpl;
+    ProjectCompilationServiceImpl projectServiceImpl;
 
     @Test
     @DisplayName("It should return status ok after all projects retrieved.")

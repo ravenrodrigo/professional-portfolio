@@ -17,7 +17,7 @@ package com.ravenrodrigo.professional_portfolio.service.impl;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.data.repository.ProjectRepository;
-import com.ravenrodrigo.professional_portfolio.service.IProjectService;
+import com.ravenrodrigo.professional_portfolio.service.IProjectCompilationService;
 import com.ravenrodrigo.professional_portfolio.web.dto.ProjectRequest;
 import com.ravenrodrigo.professional_portfolio.web.dto.ProjectResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +29,12 @@ import java.util.Optional;
  * @author Raven Rodrigo
  */
 @Service
-public class ProjectServiceImpl implements IProjectService  {
+public class ProjectCompilationServiceImpl implements IProjectCompilationService {
 
     @Autowired
     private final ProjectRepository projectRepository;
 
-    public ProjectServiceImpl(ProjectRepository projectRepository) {
+    public ProjectCompilationServiceImpl(ProjectRepository projectRepository) {
         this.projectRepository = projectRepository;
     }
 

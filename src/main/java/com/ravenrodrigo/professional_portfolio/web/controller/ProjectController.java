@@ -16,7 +16,7 @@
 package com.ravenrodrigo.professional_portfolio.web.controller;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
-import com.ravenrodrigo.professional_portfolio.service.IProjectService;
+import com.ravenrodrigo.professional_portfolio.service.IProjectCompilationService;
 import com.ravenrodrigo.professional_portfolio.web.dto.ProjectRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,9 +35,9 @@ import java.util.Optional;
 public class ProjectController {
 
     @Autowired
-    private final IProjectService projectService;
+    private final IProjectCompilationService projectService;
 
-    public ProjectController(IProjectService projectService) {
+    public ProjectController(IProjectCompilationService projectService) {
         this.projectService = projectService;
     }
 
