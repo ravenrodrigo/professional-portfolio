@@ -16,7 +16,7 @@
 package com.ravenrodrigo.professional_portfolio.web.controller;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.SkillEntity;
-import com.ravenrodrigo.professional_portfolio.service.IOwnerInformationService;
+import com.ravenrodrigo.professional_portfolio.service.IOwnerDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,9 +33,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class OwnerInformationController {
 
     @Autowired
-    private final IOwnerInformationService ownerInformationService;
+    private final IOwnerDetailsService ownerInformationService;
 
-    public OwnerInformationController(IOwnerInformationService ownerInformationService) {
+    public OwnerInformationController(IOwnerDetailsService ownerInformationService) {
         this.ownerInformationService = ownerInformationService;
     }
 

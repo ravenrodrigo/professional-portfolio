@@ -19,7 +19,7 @@ import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.data.entity.SkillEntity;
 import com.ravenrodrigo.professional_portfolio.data.repository.OwnerInformationRepository;
 import com.ravenrodrigo.professional_portfolio.data.repository.ProjectRepository;
-import com.ravenrodrigo.professional_portfolio.service.IOwnerInformationService;
+import com.ravenrodrigo.professional_portfolio.service.IOwnerDetailsService;
 import com.ravenrodrigo.professional_portfolio.web.dto.SkillRequest;
 import com.ravenrodrigo.professional_portfolio.web.dto.SkillResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ import org.springframework.stereotype.Service;
  * @author Raven Rodrigo
  */
 @Service
-public class OwnerInformationServiceImpl implements IOwnerInformationService {
+public class OwnerDetailsServiceImpl implements IOwnerDetailsService {
 
     @Autowired
     private final OwnerInformationRepository ownerInformationRepository;
@@ -39,7 +39,7 @@ public class OwnerInformationServiceImpl implements IOwnerInformationService {
     @Autowired
     private final ProjectRepository projectRepository;
 
-    public OwnerInformationServiceImpl(OwnerInformationRepository ownerInformationRepository, ProjectRepository projectRepository) {
+    public OwnerDetailsServiceImpl(OwnerInformationRepository ownerInformationRepository, ProjectRepository projectRepository) {
         this.ownerInformationRepository = ownerInformationRepository;
         this.projectRepository = projectRepository;
     }

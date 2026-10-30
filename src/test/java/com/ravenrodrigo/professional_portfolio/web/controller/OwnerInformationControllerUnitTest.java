@@ -16,7 +16,7 @@
 package com.ravenrodrigo.professional_portfolio.web.controller;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.SkillEntity;
-import com.ravenrodrigo.professional_portfolio.service.impl.OwnerInformationServiceImpl;
+import com.ravenrodrigo.professional_portfolio.service.impl.OwnerDetailsServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +45,7 @@ public class OwnerInformationControllerUnitTest {
     MockMvc mockMvc;
 
     @MockitoBean
-    OwnerInformationServiceImpl ownerInformationServiceImpl;
+    OwnerDetailsServiceImpl ownerDetailsServiceImpl;
 
     @Test
     @DisplayName("It should return status ok after all skills retrieved.")
@@ -64,7 +64,7 @@ public class OwnerInformationControllerUnitTest {
         List<SkillEntity> skills = List.of(firstSkill, secondSkill);
 
         // When
-        when(ownerInformationServiceImpl.getAllSkills()).thenReturn(skills);
+        when(ownerDetailsServiceImpl.getAllSkills()).thenReturn(skills);
 
         // Assert
         assertNotNull(skills);
@@ -90,7 +90,7 @@ public class OwnerInformationControllerUnitTest {
         List<SkillEntity> skills = List.of(firstSkill, secondSkill);
 
         // When
-        when(ownerInformationServiceImpl.getAllSkills()).thenReturn(skills);
+        when(ownerDetailsServiceImpl.getAllSkills()).thenReturn(skills);
 
         // Assert
         assertNotNull(skills);

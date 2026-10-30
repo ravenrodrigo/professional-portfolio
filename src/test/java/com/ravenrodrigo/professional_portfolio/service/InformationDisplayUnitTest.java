@@ -4,7 +4,7 @@ import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.data.entity.SkillEntity;
 import com.ravenrodrigo.professional_portfolio.data.repository.OwnerInformationRepository;
 import com.ravenrodrigo.professional_portfolio.data.repository.ProjectRepository;
-import com.ravenrodrigo.professional_portfolio.service.impl.OwnerInformationServiceImpl;
+import com.ravenrodrigo.professional_portfolio.service.impl.OwnerDetailsServiceImpl;
 import com.ravenrodrigo.professional_portfolio.web.dto.SkillRequest;
 import com.ravenrodrigo.professional_portfolio.web.dto.SkillResponse;
 import org.junit.jupiter.api.DisplayName;
@@ -32,7 +32,7 @@ import static org.mockito.Mockito.when;
 public class InformationDisplayUnitTest {
 
     @InjectMocks
-    OwnerInformationServiceImpl ownerInformationServiceImpl;
+    OwnerDetailsServiceImpl ownerDetailsServiceImpl;
 
     @Mock
     OwnerInformationRepository ownerInformationRepository;
@@ -76,7 +76,7 @@ public class InformationDisplayUnitTest {
         skillEntity.setSkillDescription("Develop backend services and APIs.");
 
         // Act
-        SkillResponse skillResponse = ownerInformationServiceImpl.translateSkillToWeb(skillEntity);
+        SkillResponse skillResponse = ownerDetailsServiceImpl.translateSkillToWeb(skillEntity);
 
         // Assert
         assertNotNull(skillResponse);
@@ -99,7 +99,7 @@ public class InformationDisplayUnitTest {
         );
 
         // Act
-        SkillEntity actualSkill = ownerInformationServiceImpl.translateSkillToDb(skillOne);
+        SkillEntity actualSkill = ownerDetailsServiceImpl.translateSkillToDb(skillOne);
 
         // Assert
         assertNotNull(actualSkill);
@@ -116,7 +116,7 @@ public class InformationDisplayUnitTest {
         );
 
         // Act
-        ownerInformationServiceImpl.deleteSkill(skill);
+        ownerDetailsServiceImpl.deleteSkill(skill);
     }
 
 

@@ -27,7 +27,7 @@ import org.springframework.stereotype.Service;
  * @author Raven Rodrigo
  */
 @Service
-public interface IOwnerInformationService {
+public interface IOwnerDetailsService {
 
     /**
      * List all the skills.
