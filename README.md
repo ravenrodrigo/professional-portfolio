@@ -37,7 +37,7 @@ The following are the services that display the projects in the homepage.
 |:------------------:|:-----------:|:---------------------:|:------------------------:|:------------------:|
 | Retrieve all Projects | GET |       `/api/v1`       |           None           |  Get all projects  |  
 
-### Information Display
+### Owner Information
 
 The following are the services that display the information of the owner.
 
