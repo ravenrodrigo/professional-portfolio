@@ -45,7 +45,7 @@ The following are the services that display the information of the owner.
 |:--------------:|:-----------:|:---------------------:|:------------------------:|:------------------:|
 | Display Skills | GET |       `/api/v1`       |           None           | Display the skills |  
 
-### Project Management
+### Project Compilation
 
 The following are the services that manages the project/s.
 
