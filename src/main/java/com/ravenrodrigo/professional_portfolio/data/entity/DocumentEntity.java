@@ -44,4 +44,48 @@ public class DocumentEntity {
 
     @Column(name = "upload_date")
     private LocalDateTime uploadDate;
+
+    public DocumentEntity(byte[] file) {
+        this.file = file;
+    }
+
+    public Long getDocumentID() {
+        return documentID;
+    }
+
+    public void setDocumentID(Long documentID) {
+        this.documentID = documentID;
+    }
+
+    public String getDocumentName() {
+        return documentName;
+    }
+
+    public void setDocumentName(String documentName) {
+        this.documentName = documentName;
+    }
+
+    public byte[] getFile() {
+        return file;
+    }
+
+    public void setFile(byte[] file) {
+        this.file = file;
+    }
+
+    public String getFileType() {
+        return fileType;
+    }
+
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
+    }
+
+    public LocalDateTime getUploadDate() {
+        return uploadDate;
+    }
+
+    public void setUploadDate(LocalDateTime uploadDate) {
+        this.uploadDate = uploadDate;
+    }
 }
