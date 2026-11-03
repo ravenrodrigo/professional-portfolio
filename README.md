@@ -41,9 +41,12 @@ The following are the services that display the projects in the homepage.
 
 The following are the services that display the information of the owner.
 
-|  Service Name  | HTTP Method |          URL          |        Parameter         |      Summary       |
-|:--------------:|:-----------:|:---------------------:|:------------------------:|:------------------:|
-| Display Skills | GET |       `/api/v1`       |           None           | Display the skills |  
+|  Service Name  | HTTP Method |         URL         |        Parameter         |          Summary           |
+|:--------------:|:-----------:|:-------------------:|:------------------------:|:--------------------------:|
+| Display Skills | GET |      `/api/v1`      |           None           |     Display the skills     |  
+| List Documents | GET | `/api/v1/resume-cv` |           None           | Retrieve all the documents |  
+
+
 
 ### Project Compilation
 
