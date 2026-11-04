@@ -16,7 +16,9 @@
 package com.ravenrodrigo.professional_portfolio.web.controller;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.DocumentEntity;
+import com.ravenrodrigo.professional_portfolio.data.entity.SkillEntity;
 import com.ravenrodrigo.professional_portfolio.service.impl.DocumentServiceImpl;
+import com.ravenrodrigo.professional_portfolio.service.impl.OwnerDetailsServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +50,9 @@ public class ContentControllerUnitTest {
     @MockitoBean
     DocumentServiceImpl documentServiceImpl;
 
+    @MockitoBean
+    OwnerDetailsServiceImpl ownerDetailsServiceImpl;
+
     @Test
     @DisplayName("It should return status ok when the documents are retrieved.")
     void shouldReturnStatusOkWhenProjectGetAll() throws Exception {
@@ -71,4 +76,57 @@ public class ContentControllerUnitTest {
         mockMvc.perform(get("/api/v1/resume-cv"))
                 .andExpect(status().isOk());
     }
+
+    @Test
+    @DisplayName("It should return status ok after all skills retrieved.")
+    void shouldReturnStatusOkWhenSkillsGetAll() throws Exception {
+        // Given
+        SkillEntity firstSkill = new SkillEntity(
+                "Skill One",
+                "The first skill"
+        );
+
+        SkillEntity secondSkill = new SkillEntity(
+                "Skill Two",
+                "The skill two"
+        );
+
+        List<SkillEntity> skills = List.of(firstSkill, secondSkill);
+
+        // When
+        when(ownerDetailsServiceImpl.getAllSkills()).thenReturn(skills);
+
+        // Assert
+        assertNotNull(skills);
+
+        mockMvc.perform(get("/api/v1/admin/ownersinfo"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("It should return status ok after all skills retrieved.")
+    void shouldReturnStatusOkWhenSkillsAreDisplayed() throws Exception {
+        // Given
+        SkillEntity firstSkill = new SkillEntity(
+                "Skill One",
+                "The first skill"
+        );
+
+        SkillEntity secondSkill = new SkillEntity(
+                "Skill Two",
+                "The skill two"
+        );
+
+        List<SkillEntity> skills = List.of(firstSkill, secondSkill);
+
+        // When
+        when(ownerDetailsServiceImpl.getAllSkills()).thenReturn(skills);
+
+        // Assert
+        assertNotNull(skills);
+
+        mockMvc.perform(get("/api/v1"))
+                .andExpect(status().isOk());
+    }
+
 }

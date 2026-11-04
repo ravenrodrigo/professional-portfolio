@@ -16,7 +16,9 @@
 package com.ravenrodrigo.professional_portfolio.web.controller;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.DocumentEntity;
+import com.ravenrodrigo.professional_portfolio.data.entity.SkillEntity;
 import com.ravenrodrigo.professional_portfolio.service.IDocumentService;
+import com.ravenrodrigo.professional_portfolio.service.IOwnerDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,8 +37,12 @@ public class ContentController {
     @Autowired
     private final IDocumentService iDocumentService;
 
-    public ContentController(IDocumentService iDocumentService) {
+    @Autowired
+    private final IOwnerDetailsService iOwnerDetailsService;
+
+    public ContentController(IDocumentService iDocumentService, IOwnerDetailsService iOwnerDetailsService) {
         this.iDocumentService = iDocumentService;
+        this.iOwnerDetailsService = iOwnerDetailsService;
     }
 
     /**
@@ -49,4 +55,23 @@ public class ContentController {
     public ResponseEntity<Iterable<DocumentEntity>> listDocuments() {
         return ResponseEntity.ok(iDocumentService.getAllDocuments());
     }
-}
+
+    /**
+     * Retrieve a list of skills.
+     *
+     * @return skills
+     */
+    @GetMapping("/admin/ownersinfo")
+    public ResponseEntity<Iterable<SkillEntity>> listAllSkills() {
+        return ResponseEntity.ok(iOwnerDetailsService.getAllSkills());
+    }
+
+    /**
+     * Display the skills on the homepage.
+     *
+     * @return skills
+     */
+    @GetMapping
+    public ResponseEntity<Iterable<SkillEntity>> displaySkills() {
+        return ResponseEntity.ok(iOwnerDetailsService.getAllSkills());
+    }}
