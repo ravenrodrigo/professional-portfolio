@@ -17,7 +17,7 @@ package com.ravenrodrigo.professional_portfolio.web.controller;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.DocumentEntity;
 import com.ravenrodrigo.professional_portfolio.data.entity.SkillEntity;
-import com.ravenrodrigo.professional_portfolio.service.impl.DocumentServiceImpl;
+import com.ravenrodrigo.professional_portfolio.service.impl.DocumentCopyServiceImpl;
 import com.ravenrodrigo.professional_portfolio.service.impl.OwnerDetailsServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -48,7 +48,7 @@ public class ContentControllerUnitTest {
     MockMvc mockMvc;
 
     @MockitoBean
-    DocumentServiceImpl documentServiceImpl;
+    DocumentCopyServiceImpl documentCopyServiceImpl;
 
     @MockitoBean
     OwnerDetailsServiceImpl ownerDetailsServiceImpl;
@@ -68,7 +68,7 @@ public class ContentControllerUnitTest {
         List<DocumentEntity> documents = List.of(resume, cv);
 
         // When
-        when(documentServiceImpl.getAllDocuments()).thenReturn(documents);
+        when(documentCopyServiceImpl.getAllDocuments()).thenReturn(documents);
 
         // Assert
         assertNotNull(documents);

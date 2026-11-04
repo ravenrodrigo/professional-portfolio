@@ -17,7 +17,7 @@ package com.ravenrodrigo.professional_portfolio.web.controller;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.DocumentEntity;
 import com.ravenrodrigo.professional_portfolio.data.entity.SkillEntity;
-import com.ravenrodrigo.professional_portfolio.service.IDocumentService;
+import com.ravenrodrigo.professional_portfolio.service.IDocumentCopyService;
 import com.ravenrodrigo.professional_portfolio.service.IOwnerDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -35,12 +35,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class ContentController {
 
     @Autowired
-    private final IDocumentService iDocumentService;
+    private final IDocumentCopyService iDocumentService;
 
     @Autowired
     private final IOwnerDetailsService iOwnerDetailsService;
 
-    public ContentController(IDocumentService iDocumentService, IOwnerDetailsService iOwnerDetailsService) {
+    public ContentController(IDocumentCopyService iDocumentService, IOwnerDetailsService iOwnerDetailsService) {
         this.iDocumentService = iDocumentService;
         this.iOwnerDetailsService = iOwnerDetailsService;
     }

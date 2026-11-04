@@ -17,7 +17,7 @@ package com.ravenrodrigo.professional_portfolio.service;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.DocumentEntity;
 import com.ravenrodrigo.professional_portfolio.data.repository.DocumentRepository;
-import com.ravenrodrigo.professional_portfolio.service.impl.DocumentServiceImpl;
+import com.ravenrodrigo.professional_portfolio.service.impl.DocumentCopyServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -43,7 +43,7 @@ import static org.mockito.Mockito.when;
 public class DocumentCopyServiceUnitTest {
 
     @InjectMocks
-    DocumentServiceImpl documentServiceImpl;
+    DocumentCopyServiceImpl documentCopyServiceImpl;
 
     @Mock
     DocumentRepository documentRepository;
@@ -53,11 +53,12 @@ public class DocumentCopyServiceUnitTest {
     void shouldGetTheDocuments() {
         // Arrange
         Iterable<DocumentEntity> documents = Arrays.asList(
-                new DocumentEntity(), new DocumentEntity()
+                new DocumentEntity(new byte[]{30, 40, 40}),
+                new DocumentEntity(new byte[]{20, 30, 40})
         );
         // Act
         when(documentRepository.findAll()).thenReturn(documents);
-        Iterable<DocumentEntity> actualDocuments = documentServiceImpl.getAllDocuments();
+        Iterable<DocumentEntity> actualDocuments = documentCopyServiceImpl.getAllDocuments();
 
         // Assert
         assertNotNull(actualDocuments);

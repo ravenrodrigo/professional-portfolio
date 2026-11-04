@@ -13,23 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.ravenrodrigo.professional_portfolio.service;
+package com.ravenrodrigo.professional_portfolio.service.impl;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.DocumentEntity;
+import com.ravenrodrigo.professional_portfolio.data.repository.DocumentRepository;
+import com.ravenrodrigo.professional_portfolio.service.IDocumentCopyService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * An interface for Document Service.
+ * Implementation class of interface document service.
  *
  * @author Raven Rodrigo
  */
 @Service
-public interface IDocumentService {
+public class DocumentCopyServiceImpl implements IDocumentCopyService {
+
+    @Autowired
+    private final DocumentRepository documentRepository;
+
+    public DocumentCopyServiceImpl(DocumentRepository documentRepository) {
+        this.documentRepository = documentRepository;
+    }
 
     /**
-     * Retrieve all the documents.
+     * A method that retrieve the documents.
      *
      * @return documents
      */
-    Iterable<DocumentEntity> getAllDocuments();
+    @Override
+    public Iterable<DocumentEntity> getAllDocuments() {
+        return this.documentRepository.findAll();
+    }
 }
