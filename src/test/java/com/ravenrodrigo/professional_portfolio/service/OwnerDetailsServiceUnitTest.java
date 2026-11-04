@@ -2,7 +2,7 @@ package com.ravenrodrigo.professional_portfolio.service;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.data.entity.SkillEntity;
-import com.ravenrodrigo.professional_portfolio.data.repository.OwnerInformationRepository;
+import com.ravenrodrigo.professional_portfolio.data.repository.SkillRepository;
 import com.ravenrodrigo.professional_portfolio.data.repository.ProjectRepository;
 import com.ravenrodrigo.professional_portfolio.service.impl.OwnerDetailsServiceImpl;
 import com.ravenrodrigo.professional_portfolio.web.dto.SkillRequest;
@@ -29,13 +29,13 @@ import static org.mockito.Mockito.when;
  */
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest
-public class InformationDisplayUnitTest {
+public class OwnerDetailsServiceUnitTest {
 
     @InjectMocks
     OwnerDetailsServiceImpl ownerDetailsServiceImpl;
 
     @Mock
-    OwnerInformationRepository ownerInformationRepository;
+    SkillRepository skillRepository;
 
     @Mock
     ProjectRepository projectRepository;
@@ -59,8 +59,8 @@ public class InformationDisplayUnitTest {
         );
 
         // Act
-        when(ownerInformationRepository.findAll()).thenReturn(expectedSkills);
-        Iterable<SkillEntity> actualSkills = ownerInformationRepository.findAll();
+        when(skillRepository.findAll()).thenReturn(expectedSkills);
+        Iterable<SkillEntity> actualSkills = skillRepository.findAll();
 
         // Assert
         assertNotNull(actualSkills);

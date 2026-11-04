@@ -25,5 +25,5 @@ import org.springframework.stereotype.Repository;
  * @author Raven Rodrigo
  */
 @Repository
-public interface OwnerInformationRepository extends CrudRepository<SkillEntity, Long> {
+public interface SkillRepository extends CrudRepository<SkillEntity, Long> {
 }

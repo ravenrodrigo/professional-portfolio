@@ -17,7 +17,7 @@ package com.ravenrodrigo.professional_portfolio.service.impl;
 
 import com.ravenrodrigo.professional_portfolio.data.entity.ProjectEntity;
 import com.ravenrodrigo.professional_portfolio.data.entity.SkillEntity;
-import com.ravenrodrigo.professional_portfolio.data.repository.OwnerInformationRepository;
+import com.ravenrodrigo.professional_portfolio.data.repository.SkillRepository;
 import com.ravenrodrigo.professional_portfolio.data.repository.ProjectRepository;
 import com.ravenrodrigo.professional_portfolio.service.IOwnerDetailsService;
 import com.ravenrodrigo.professional_portfolio.web.dto.SkillRequest;
@@ -34,13 +34,13 @@ import org.springframework.stereotype.Service;
 public class OwnerDetailsServiceImpl implements IOwnerDetailsService {
 
     @Autowired
-    private final OwnerInformationRepository ownerInformationRepository;
+    private final SkillRepository skillRepository;
 
     @Autowired
     private final ProjectRepository projectRepository;
 
-    public OwnerDetailsServiceImpl(OwnerInformationRepository ownerInformationRepository, ProjectRepository projectRepository) {
-        this.ownerInformationRepository = ownerInformationRepository;
+    public OwnerDetailsServiceImpl(SkillRepository skillRepository, ProjectRepository projectRepository) {
+        this.skillRepository = skillRepository;
         this.projectRepository = projectRepository;
     }
 
@@ -51,7 +51,7 @@ public class OwnerDetailsServiceImpl implements IOwnerDetailsService {
      */
     @Override
     public Iterable<SkillEntity> getAllSkills() {
-        return this.ownerInformationRepository.findAll();
+        return this.skillRepository.findAll();
     }
 
     /**
@@ -92,7 +92,7 @@ public class OwnerDetailsServiceImpl implements IOwnerDetailsService {
      */
     @Override
     public void deleteSkill(SkillEntity skillEntity) {
-        ownerInformationRepository.delete(skillEntity);
+        skillRepository.delete(skillEntity);
     }
 
     /**
