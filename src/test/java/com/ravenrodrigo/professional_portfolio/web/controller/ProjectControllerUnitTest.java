@@ -116,7 +116,7 @@ public class ProjectControllerUnitTest {
         // Assert
         assertNotNull(projects);
 
-        mockMvc.perform(get("/api/v1"))
+        mockMvc.perform(get("/api/v1/admin/"))
                 .andExpect(status().isOk());
     }
 
@@ -195,7 +195,7 @@ public class ProjectControllerUnitTest {
 
         // When
         when(projectServiceImpl.getProjectById(projectEntity.getProjectId())).thenReturn(Optional.of(projectEntity));
-        mockMvc.perform(get("/api/v1/1"))
+        mockMvc.perform(get("/api/v1/admin/1"))
                 .andExpect(status().isOk());
 
     }
