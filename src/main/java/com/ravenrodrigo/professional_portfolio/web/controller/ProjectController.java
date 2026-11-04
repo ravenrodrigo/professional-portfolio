@@ -31,7 +31,7 @@ import java.util.Optional;
  * @author Raven Rodrigo
  */
 @RestController
-@RequestMapping("/api/v1/test")
+@RequestMapping("/api/v1")
 public class ProjectController {
 
     @Autowired

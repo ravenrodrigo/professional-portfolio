@@ -87,7 +87,7 @@ public class ProjectControllerUnitTest {
     }
 
     @Test
-    @DisplayName("It should return status ok after all projects retrieved.")
+    @DisplayName("It should return status ok after all projects displayed.")
     void shouldReturnStatusOkWhenProjectDisplayAll() throws Exception {
         // Given
         ProjectEntity firstProject = new ProjectEntity(
