@@ -32,12 +32,12 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("/api/v1/admin")
-public class ProjectController {
+public class AdminController {
 
     @Autowired
     private final IProjectCompilationService projectService;
 
-    public ProjectController(IProjectCompilationService projectService) {
+    public AdminController(IProjectCompilationService projectService) {
         this.projectService = projectService;
     }
 

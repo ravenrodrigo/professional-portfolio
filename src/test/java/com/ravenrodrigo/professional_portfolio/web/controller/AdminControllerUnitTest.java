@@ -42,9 +42,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  *
  * @author Raven Rodrigo
  */
-@WebMvcTest(ProjectController.class)
+@WebMvcTest(AdminController.class)
 @AutoConfigureMockMvc
-public class ProjectControllerUnitTest {
+public class AdminControllerUnitTest {
 
     @Autowired
     MockMvc mockMvc;
